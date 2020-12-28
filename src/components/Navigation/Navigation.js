@@ -1,12 +1,10 @@
 import React, { Children } from 'react';
 import './Navigation.css';
+import createClassName from "../../utils/createClassName";
 
 export const Navigation = ({ className, children }) => {
 
-  const navClassName = [
-    'nav',
-    className,
-  ].join(' ');
+  const navClassName = createClassName('nav', className);
 
   const key = (i) => `${i}-${Math.random()}`;
 

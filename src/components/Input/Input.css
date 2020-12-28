@@ -1,0 +1,21 @@
+.input {
+	border:none;
+	background-image:none;
+	background-color:transparent;
+	box-shadow: none;
+}
+
+.input::placeholder {
+	color: #B6BCBF;
+}
+
+.input_type_search {
+	padding: 21px 24px;
+	width: 100%;
+	background: #FFFFFF;
+	border: 1px solid #D1D2D6;
+	box-sizing: border-box;
+	backdrop-filter: blur(8px);
+	border-radius: 100px;
+}
+

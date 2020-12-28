@@ -1,11 +1,16 @@
-import React from "react"
+import React from 'react';
+import './Input.css';
+import createClassName from '../../utils/createClassName';
 
-export const Input = ({ name, className  }) => {
+export const Input = ({ name, className, ...rest }) => {
+
+  const inputClassName = createClassName('input', className);
 
   return (
     <input
-      className={ className }
+      className={inputClassName}
       name={ name }
+      {...rest}
     />
    );
 }

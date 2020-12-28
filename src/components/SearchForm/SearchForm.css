@@ -1,0 +1,24 @@
+.search {
+	margin: auto;
+	max-width: 600px;
+}
+
+.search__title {
+	font-family: Roboto Slab, sans-serif;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 60px;
+	line-height: 64px;
+	margin: 0;
+	padding: 0 0 32px;
+}
+
+.search__text {
+	font-style: normal;
+	font-weight: normal;
+	font-size: 18px;
+	line-height: 24px;
+	margin: 0;
+	padding: 0 0 64px;
+	max-width: 545px;
+}

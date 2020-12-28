@@ -1,0 +1,8 @@
+.form {
+	display: flex;
+}
+
+.form_theme_search {
+	width: 100%;
+	position: relative;
+}

@@ -1,13 +1,17 @@
-import React from "react"
+import React from "react";
+import './Form.css';
+import createClassName from "../../utils/createClassName";
 
-export const Form = ({className, onSubmit, children}) => {
+export const Form = ({ className, onSubmit, children }) => {
+
+  const formClassName = createClassName('form', className);
 
   return (
     <form
-      className={className}
-      onSubmit={onSubmit}
+      className={ formClassName }
+      onSubmit={ onSubmit }
     >
-      {children}
+      { children }
     </form>
   );
 }
