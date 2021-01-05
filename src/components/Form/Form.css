@@ -1,8 +1,11 @@
-.form {
-	display: flex;
-}
-
 .form_theme_search {
 	width: 100%;
 	position: relative;
+}
+
+@media screen and (max-width: 720px) {
+	.form_theme_search {
+		display: grid;
+		gap: 16px;
+	}
 }

@@ -11,7 +11,7 @@ export const Navigation = ({ className, children }) => {
   const navItems = () => Children.map(children, (item, i) => item ? <li key={key(i)} className={'nav__item'}>{item}</li> : '');
 
   return (
-    <nav className={navClassName}>
+    <nav className={ navClassName }>
      <ul className={'nav__list'}>
        { navItems() }
      </ul>

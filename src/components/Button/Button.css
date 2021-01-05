@@ -58,3 +58,25 @@
 	color: #fff;
 }
 
+.button_type_menu {
+  display: none;
+}
+
+@media screen and (max-width: 1024px) {
+	.button {
+		font-size: 16px;
+	}
+}
+
+@media screen and (max-width: 720px) {
+	.button_type_menu {
+		display: block;
+	}
+	
+	.button_type_search {
+		position: static;
+		width: 100%;
+		display: inline-block;
+		text-align: center;
+	}
+}

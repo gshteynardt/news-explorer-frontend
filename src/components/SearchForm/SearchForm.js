@@ -2,7 +2,7 @@ import React from "react";
 import './SearchForm.css';
 import { Form } from "../Form/Form";
 import { Input } from "../Input/Input";
-import {Button} from "../Button/Button";
+import { Button } from "../Button/Button";
 
 export const SearchForm = () => {
 

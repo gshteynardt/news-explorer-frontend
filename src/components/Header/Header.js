@@ -4,6 +4,7 @@ import { Button } from "../Button/Button";
 import { Logo } from "../Icons/Logo";
 import { EnterIcon } from "../Icons/LogoutIcon";
 import { Navigation } from "../Navigation/Navigation";
+import {Menu} from "../Icons/Menu";
 
 export const Header = ({ loggedIn = true }) => {
 
@@ -34,6 +35,12 @@ export const Header = ({ loggedIn = true }) => {
         </Button>
 
       </Navigation>
+
+      <Button
+        className={'button_type_menu'}
+      >
+        <Menu/>
+      </Button>
     </header>
   );
 }

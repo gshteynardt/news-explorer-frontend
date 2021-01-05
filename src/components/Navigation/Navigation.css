@@ -1,11 +1,21 @@
 .nav__list {
 	margin: 0;
 	padding: 0;
-	display: flex;
+	display: grid;
+	grid-template-columns: repeat(3, minmax(min-content, max-content));
+	grid-gap: 34px;
 	align-items: center;
 	list-style-type: none;
 }
 
-.nav__item {
-  margin-left: 34px;
+@media screen and (max-width: 1024px) {
+	.nav__list {
+		grid-gap: 16px;
+	}
+}
+
+@media screen and (max-width: 720px) {
+	.nav__list {
+		display: none;
+	}
 }

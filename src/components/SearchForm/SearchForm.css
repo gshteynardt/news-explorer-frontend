@@ -1,6 +1,7 @@
 .search {
 	margin: auto;
 	max-width: 600px;
+	padding: 80px 16px;
 }
 
 .search__title {
@@ -21,4 +22,28 @@
 	margin: 0;
 	padding: 0 0 64px;
 	max-width: 545px;
+}
+
+@media screen and (max-width: 1024px) {
+	.search {
+		max-width: 452px;
+		padding: 48px 16px;
+	}
+	
+	.search__title {
+		font-size: 36px;
+		line-height: 40px;
+		padding: 0 0 16px;
+		max-width: 385px;
+	}
+	
+	.search__text {
+		padding: 0 0 48px;
+	}
+}
+
+@media screen and (max-width: 1024px) {
+	.search__text {
+		padding: 0 0 122px;
+	}
 }

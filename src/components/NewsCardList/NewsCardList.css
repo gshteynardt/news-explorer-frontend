@@ -1,0 +1,9 @@
+.news {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(224px, 1fr));
+	gap: 16px;
+	align-content: center;
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}

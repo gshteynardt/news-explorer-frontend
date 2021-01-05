@@ -4,7 +4,5 @@
 	min-width: 300px;
 	max-width: 1440px;
 	min-height: 100vh;
-	display: grid;
-	grid-gap: 80px;
 	color: #fff;
 }
