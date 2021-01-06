@@ -1,9 +1,19 @@
-.news {
+.news__items {
 	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(224px, 1fr));
+	grid-template-columns: repeat(3, minmax(288px, 400px));
 	gap: 16px;
 	align-content: center;
 	list-style: none;
 	padding: 0;
+	margin: 64px 0;
+}
+
+.news__title {
+	font-family: Roboto Slab, sans-serif;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 30px;
+	line-height: 34px;
+	text-align: start;
 	margin: 0;
 }

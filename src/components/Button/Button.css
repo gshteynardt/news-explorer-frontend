@@ -17,7 +17,7 @@
 }
 
 .button:hover {
-	opacity: .8;
+	opacity: .7;
 	transition: opacity linear .2s;
 }
 
@@ -58,8 +58,43 @@
 	color: #fff;
 }
 
+.button_type_search:hover {
+	background-color: #347EFF;
+	opacity: 1;
+	transition: background-color linear .2s;
+}
+
 .button_type_menu {
   display: none;
+}
+
+.button_bookmark {
+	position: absolute;
+	top: 24px;
+	right: 24px;
+}
+
+.button_bookmark-path {
+	stroke: #B6BCBF;
+}
+
+.button_bookmark:hover .button_bookmark-path {
+	stroke: #1A1B22;
+	transition: stroke linear .3s;
+}
+
+.button_bookmark:hover + p {
+	visibility: visible;
+	transition: visibility .2s linear .3s;
+}
+
+.button_type_show-card {
+	color: #1A1B22;
+	background-color: #fff;
+	border-radius: 100px;
+	padding: 21px 84px;
+	margin: auto;
+	align-self: center;
 }
 
 @media screen and (max-width: 1024px) {

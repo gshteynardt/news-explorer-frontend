@@ -15,15 +15,8 @@
 .wrapper-news {
 	color: #1A1B22;
 	padding: 80px 0;
-}
-
-.title-news {
-	font-family: Roboto Slab, sans-serif;
-	font-style: normal;
-	font-weight: normal;
-	font-size: 30px;
-	line-height: 34px;
-	text-align: start;
+	display: flex;
+	flex-direction: column;
 }
 
 @media screen and (max-width: 480px) {

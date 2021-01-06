@@ -6,10 +6,15 @@ export const Form = ({ className, onSubmit, children }) => {
 
   const formClassName = createClassName('form', className);
 
+  const handleSearch = (e) => {
+    e.preventDefault();
+    onSubmit();
+  }
+
   return (
     <form
       className={ formClassName }
-      onSubmit={ onSubmit }
+      onSubmit={ handleSearch }
     >
       { children }
     </form>

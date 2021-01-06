@@ -12,9 +12,10 @@ export const NewsCard = ({ title, path, text, data, source, id}) => {
 
       <figure className={'card__wrapper'}>
         <Bookmark
-          classNameBtn={'card__bookmark-button'}
-          className={'card__bookmark'}
+          classNameBtn={'button_bookmark'}
+          classNamePath={'button_bookmark-path'}
         />
+        <p className={'card__popup'}>Войдите, чтобы сохранять статьи</p>
        <img
          className={'card__img'}
          alt={title}

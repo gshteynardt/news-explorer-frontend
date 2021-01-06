@@ -4,7 +4,7 @@ import { Form } from "../Form/Form";
 import { Input } from "../Input/Input";
 import { Button } from "../Button/Button";
 
-export const SearchForm = () => {
+export const SearchForm = ({onSubmit}) => {
 
   return (
     <div className={'search'}>
@@ -14,7 +14,10 @@ export const SearchForm = () => {
       <p className={'search__text'}>
         Находите самые свежие статьи на любую тему и сохраняйте в своём личном кабинете.
       </p>
-      <Form className={'form_theme_search'}>
+      <Form
+        className={'form_theme_search'}
+        onSubmit={onSubmit}
+      >
         <Input
           className={'input_type_search'}
           placeholder={'Введите тему новости'}
