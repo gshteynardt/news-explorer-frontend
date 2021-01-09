@@ -42,7 +42,7 @@
 	}
 }
 
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 720px) {
 	.search__text {
 		padding: 0 0 122px;
 	}

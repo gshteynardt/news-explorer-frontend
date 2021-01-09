@@ -7,43 +7,18 @@
 	padding: 0;
 	cursor: pointer;
 	outline: none;
-	font-family: Roboto, serif;
+	font-family: Roboto, sans-serif;
 	font-style: normal;
 	font-weight: 500;
 	font-size: 18px;
 	line-height: 24px;
-	display: inline-flex;
+	display: flex;
 	align-items: center;
+	transition: opacity linear .2s;
 }
 
 .button:hover {
 	opacity: .7;
-	transition: opacity linear .2s;
-}
-
-.button_active {
-	color: #fff;
-}
-
-.button_active::before {
-	box-sizing: border-box;
-	content: '';
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	color: white;
-	border-bottom: 3px solid #fff;
-	padding-bottom: 47px;
-}
-
-.button_type_border {
-	border: 1px solid #FFFFFF;
-	box-sizing: border-box;
-	border-radius: 100px;
-	padding: 12px 19px;
-	color: #fff;
 }
 
 .button_type_search {
@@ -56,36 +31,16 @@
 	bottom: 0;
 	padding: 21px 54px;
 	color: #fff;
+	transition: background-color linear .2s;
 }
 
 .button_type_search:hover {
 	background-color: #347EFF;
 	opacity: 1;
-	transition: background-color linear .2s;
 }
 
 .button_type_menu {
   display: none;
-}
-
-.button_bookmark {
-	position: absolute;
-	top: 24px;
-	right: 24px;
-}
-
-.button_bookmark-path {
-	stroke: #B6BCBF;
-}
-
-.button_bookmark:hover .button_bookmark-path {
-	stroke: #1A1B22;
-	transition: stroke linear .3s;
-}
-
-.button_bookmark:hover + p {
-	visibility: visible;
-	transition: visibility .2s linear .3s;
 }
 
 .button_type_show-card {
@@ -113,5 +68,9 @@
 		width: 100%;
 		display: inline-block;
 		text-align: center;
+	}
+	
+	.button_type_show-card {
+		padding: 17px 60px;
 	}
 }

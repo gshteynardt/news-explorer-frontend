@@ -19,9 +19,26 @@
 	flex-direction: column;
 }
 
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 1024px) {
 	.page__content {
-		/*margin: 40px auto 48px;*/
-		/*padding: 0 19px 0;*/
+		padding: 0 40px 0;
+	}
+	
+	.wrapper-news {
+		padding: 40px 0;
+	}
+	
+	.wrapper-about {
+		padding: 40px 40px;
+	}
+}
+
+@media screen and (max-width: 720px) {
+	.page__content {
+		padding: 0 16px 0;
+	}
+	
+	.wrapper-news {
+		padding: 32px 0;
 	}
 }

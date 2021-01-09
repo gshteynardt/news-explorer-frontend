@@ -1,9 +1,8 @@
 .news__item {
 	overflow: hidden;
-	border-radius: 5px;
+	border-radius: 16px;
 	background-color: #fff;
 	border: none;
-	height: 576px;
 }
 
 .card__wrapper {
@@ -29,7 +28,7 @@
 	object-fit: cover;
 	object-position: center bottom;
 	min-width: 100%;
-	height: 272px;
+	height: 45%;
 }
 
 .card__data {
@@ -49,8 +48,7 @@
 	font-size: 26px;
 	line-height: 30px;
 	color: #1A1B22;
-	margin: 0;
-	padding-bottom: 16px;
+	margin: 0 0 16px 0;
 	display: -webkit-box;
 	-webkit-box-orient: vertical;
 	-webkit-line-clamp: 3;
@@ -99,6 +97,65 @@
 	visibility: hidden;
 }
 
-.button_bookmark:hover + p {
+.card__bookmark {
+	position: absolute;
+	top: 24px;
+	right: 24px;
+}
+
+.card__bookmark-path {
+	stroke: #B6BCBF;
+}
+
+.card__bookmark:hover .card__bookmark-path {
+	stroke: #1A1B22;
+	transition: stroke linear .3s;
+}
+
+.card__bookmark:hover + .card__popup {
 	visibility: visible;
+	transition: visibility .5s linear;
+}
+
+@media screen and (max-width: 1024px) {
+	
+	.card__caption {
+		padding: 16px;
+	}
+	
+	.card__title {
+		font-size: 22px;
+		line-height: 24px;
+		margin: 0 0 10px 0;
+	}
+	
+	.card__img {
+		height: 35%;
+	}
+	
+	.card__source {
+		left: 16px;
+		bottom: 16px;
+	}
+}
+
+@media screen and (max-width: 720px) {
+	.card__title {
+		line-height: 26px;
+		-webkit-line-clamp: 2;
+	}
+	
+	.card__img {
+		height: 35%;
+	}
+	
+	.card__data {
+		padding-bottom: 10px;
+	}
+}
+
+@media screen and (max-width: 600px) {
+	.card__img {
+		height: 44%;
+	}
 }

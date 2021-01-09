@@ -14,7 +14,6 @@ export const Bookmark = ({classNameBtn, classNamePath}) => {
       <path
         className={classNamePath}
         d="M19.382 23.714L14 27.943V12h12v15.942l-5.382-4.228-.618-.486-.618.486z"
-        stroke="#1A1B22"
         strokeWidth={2}
       />
     </svg>

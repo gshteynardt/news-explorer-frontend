@@ -5,6 +5,7 @@ import { Logo } from "../Icons/Logo";
 import { EnterIcon } from "../Icons/LogoutIcon";
 import { Navigation } from "../Navigation/Navigation";
 import {Menu} from "../Icons/Menu";
+import {Link} from "../Link/Link";
 
 export const Header = ({ loggedIn = true }) => {
 
@@ -17,22 +18,27 @@ export const Header = ({ loggedIn = true }) => {
       </picture>
       <Navigation className='header__nav'>
 
-        <Button
-          className={'button_active'}
+        <Link
+          activeClassName={'link_active'}
           text={ 'Главная' }
+          to={'/'}
         />
 
         { loggedIn
-          ? <Button
-          text={'Сохранённые статьи'}
+          ? <Link
+            activeClassName={'link_active'}
+            text={'Сохранённые статьи'}
+            to={'/saved-news'}
         /> : null }
 
-        <Button
-          className={'button_type_border'}
+        <Link
+          className={'link_type_border'}
+          activeClassName={'link_active'}
           text={ loggedIn ? 'Грета' : 'Авторизоваться' }
+          to={'/foo'}
         >
           { loggedIn && <EnterIcon/> }
-        </Button>
+        </Link>
 
       </Navigation>
 

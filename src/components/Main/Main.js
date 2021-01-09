@@ -3,15 +3,15 @@ import './Main.css';
 import { Header } from "../Header/Header";
 import { SearchForm } from "../SearchForm/SearchForm";
 import { NewsCardList } from "../NewsCardList/NewsCardList";
-import {Preloader} from "../Preloader/Preloader";
-
+import { Preloader } from "../Preloader/Preloader";
+import { About } from '../About/About';
 
 export const Main = ({ loggedIn }) => {
   const [error, setError] = useState(false);
-  const [isFoundNews, serIsFoundNews] = useState(false);
+  const [isFoundNews, setIsFoundNews] = useState(false);
 
   const onSubmit = () => {
-    serIsFoundNews(true);
+    setIsFoundNews(true);
 
     setTimeout(
       () => setError(true)
@@ -19,16 +19,18 @@ export const Main = ({ loggedIn }) => {
 
     setTimeout(() => {
       setError(false);
-      serIsFoundNews(false);
+      setIsFoundNews(false);
     }, 5000)
   }
 
   return (
     <>
       <section className='wrapper-search-header'>
-        <Header loggedIn={ loggedIn }/>
+        <Header
+          loggedIn={ loggedIn }
+        />
         <SearchForm
-          onSubmit={onSubmit}
+          onSubmit={ onSubmit }
         />
       </section>
 
@@ -42,8 +44,8 @@ export const Main = ({ loggedIn }) => {
         <NewsCardList />
         </section>
         }
-       {/*<About/>*/}
       </main>
+      <About/>
       {/*<Footer/>*/}
     </>
   );
