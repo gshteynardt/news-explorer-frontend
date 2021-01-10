@@ -9,7 +9,7 @@ function App() {
   return (
     <div className="page">
       <Switch>
-        <Route exact path={'/'} component={Main} />
+        <Route exact path={'/'} component={ Main } />
         <Route path={'/saved-news'} component={SavedNewsPage} />
         <Redirect to="/" />
       </Switch>

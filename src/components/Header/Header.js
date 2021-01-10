@@ -4,40 +4,63 @@ import { Button } from "../Button/Button";
 import { Logo } from "../Icons/Logo";
 import { EnterIcon } from "../Icons/LogoutIcon";
 import { Navigation } from "../Navigation/Navigation";
-import {Menu} from "../Icons/Menu";
-import {Link} from "../Link/Link";
+import { Menu } from "../Icons/Menu";
+import { Link } from "../Link/Link";
+import createClassName from "../../utils/createClassName";
 
-export const Header = ({ loggedIn = true }) => {
+export const Header = ({ className, loggedIn = true, path }) => {
 
-  //добавить логику удаления, добавления класса
+  const headerClassName = createClassName('header', className)
+
+  const logoClassName = path === '/' ? 'logo_theme_white' : 'logo_theme_black';
+
+  const linkClassName = `link ${path === '/'
+    ? 'link_type_white'
+    : 'link_type_black'
+  }`;
+
+  const linkActiveClassName = path === '/'
+    ? 'link_type_white-active'
+    : 'link_type_black-active';
+
+  const linkAuthClassName = `link_type_border ${path === '/' 
+    ? 'link_type_border-white'
+    : 'link_type_border-black'
+  }`;
 
   return (
-    <header className='header page__header'>
+    <header className={`${headerClassName} page__header`}>
       <picture className='logo header__logo'>
-      <Logo/>
+      <Logo classNamePath={logoClassName}/>
       </picture>
       <Navigation className='header__nav'>
 
         <Link
-          activeClassName={'link_active'}
+          className={linkClassName}
+          activeClassName={linkActiveClassName}
           text={ 'Главная' }
           to={'/'}
+          exact
         />
 
         { loggedIn
           ? <Link
-            activeClassName={'link_active'}
+            className={linkClassName}
+            activeClassName={linkActiveClassName}
             text={'Сохранённые статьи'}
             to={'/saved-news'}
         /> : null }
 
         <Link
-          className={'link_type_border'}
-          activeClassName={'link_active'}
+          className={linkAuthClassName}
           text={ loggedIn ? 'Грета' : 'Авторизоваться' }
           to={'/foo'}
         >
-          { loggedIn && <EnterIcon/> }
+          { loggedIn && <EnterIcon classNamePath={
+            path === '/'
+              ? 'link__icon-white'
+              : 'link__icon-black'
+          }/> }
         </Link>
 
       </Navigation>

@@ -6,7 +6,8 @@ import { NewsCardList } from "../NewsCardList/NewsCardList";
 import { Preloader } from "../Preloader/Preloader";
 import { About } from '../About/About';
 
-export const Main = ({ loggedIn }) => {
+export const Main = ({ loggedIn, location }) => {
+  console.log(location)
   const [error, setError] = useState(false);
   const [isFoundNews, setIsFoundNews] = useState(false);
 
@@ -28,6 +29,7 @@ export const Main = ({ loggedIn }) => {
       <section className='wrapper-search-header'>
         <Header
           loggedIn={ loggedIn }
+          path = { location.pathname }
         />
         <SearchForm
           onSubmit={ onSubmit }

@@ -5,9 +5,23 @@
 	border-bottom: 1px solid rgba(255, 255, 255, 0.2);
 }
 
+
+.logo_theme_white {
+ fill: #fff;
+}
+
+.logo_theme_black {
+	fill: #000;
+}
+
 .header__logo {
 	display: flex;
 	align-items: center;
+}
+
+.header_theme_white {
+  background-color: #fff;
+	border-bottom: 1px solid #D1D2D6;
 }
 
 @media screen and (max-width: 1024px) {
