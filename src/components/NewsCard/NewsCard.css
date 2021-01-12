@@ -31,7 +31,7 @@
 	height: 45%;
 }
 
-.card__data {
+.card__date {
 	font-family: Source Sans Pro, sans-serif;
 	font-style: normal;
 	font-size: 18px;
@@ -84,37 +84,69 @@
 
 .card__popup {
 	position: absolute;
-	top: 24px;
-	right: 69px;
-	margin: 0 5px 0 0;
 	font-style: normal;
 	font-weight: 500;
 	font-size: 10px;
 	line-height: 12px;
-	padding: 14px 12px;
 	background-color: #fff;
 	border-radius: 10px;
-	visibility: hidden;
+	margin: 0;
 }
 
-.card__bookmark {
+.card__popup_prompt {
+	top: 24px;
+	right: 64px;
+	margin: 0 5px 0 0;
+	padding: 14px 12px;
+	visibility: hidden;
+	transition: visibility linear .2s;
+}
+
+.card__popup_keyword {
+	top: 24px;
+	left: 24px;
+	padding: 8px 12px;
+	font-style: normal;
+	font-weight: 500;
+	font-size: 14px;
+	line-height: 24px;
+}
+
+.card__icon {
 	position: absolute;
 	top: 24px;
 	right: 24px;
 }
 
-.card__bookmark-path {
+.card__icon_bookmark {
 	stroke: #B6BCBF;
+	transition: stroke linear .2s;
 }
 
-.card__bookmark:hover .card__bookmark-path {
+.card__icon_marked {
+	fill: #2F71E5;
+}
+
+.card__icon:hover .card__icon_bookmark {
 	stroke: #1A1B22;
-	transition: stroke linear .3s;
 }
 
-.card__bookmark:hover + .card__popup {
+.card__icon_delete {
+	fill: #B6BCBF;
+	transition: fill linear .2s;
+}
+
+.card__icon:hover .card__icon_delete {
+	fill: #1A1B22;
+}
+
+.card__button:hover + .card__popup_prompt {
 	visibility: visible;
-	transition: visibility .5s linear;
+}
+
+.card__link {
+	text-decoration: none;
+	color: #1A1B22;
 }
 
 @media screen and (max-width: 1024px) {
@@ -137,6 +169,21 @@
 		left: 16px;
 		bottom: 16px;
 	}
+	
+	.card__icon {
+		top: 8px;
+		right: 8px;
+	}
+	
+	.card__popup_prompt {
+		top: 8px;
+		right: 48px;
+	}
+	
+	.card__popup_keyword {
+		top: 8px;
+		left: 8px;
+	}
 }
 
 @media screen and (max-width: 720px) {
@@ -151,6 +198,21 @@
 	
 	.card__data {
 		padding-bottom: 10px;
+	}
+	
+	.card__icon {
+		top: 16px;
+		right: 16px;
+	}
+	
+	.card__popup_prompt {
+		top: 16px;
+		right: 56px;
+	}
+	
+	.card__popup_keyword {
+		top: 16px;
+		left: 8px;
 	}
 }
 

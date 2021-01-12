@@ -1,4 +1,4 @@
-.page__content {
+.wrapper__content {
 	padding: 0 104px 0;
 }
 
@@ -20,10 +20,9 @@
 }
 
 @media screen and (max-width: 1024px) {
-	.page__content {
+	.wrapper__content {
 		padding: 0 40px 0;
 	}
-	
 	.wrapper-news {
 		padding: 40px 0;
 	}
@@ -34,7 +33,7 @@
 }
 
 @media screen and (max-width: 720px) {
-	.page__content {
+	.wrapper__content {
 		padding: 0 16px 0;
 	}
 	

@@ -8,36 +8,20 @@ import { Menu } from "../Icons/Menu";
 import { Link } from "../Link/Link";
 import createClassName from "../../utils/createClassName";
 
-export const Header = ({ className, loggedIn = true, path }) => {
+export const Header = ({ className, loggedIn , theme }) => {
 
   const headerClassName = createClassName('header', className)
 
-  const logoClassName = path === '/' ? 'logo_theme_white' : 'logo_theme_black';
-
-  const linkClassName = `link ${path === '/'
-    ? 'link_type_white'
-    : 'link_type_black'
-  }`;
-
-  const linkActiveClassName = path === '/'
-    ? 'link_type_white-active'
-    : 'link_type_black-active';
-
-  const linkAuthClassName = `link_type_border ${path === '/' 
-    ? 'link_type_border-white'
-    : 'link_type_border-black'
-  }`;
-
   return (
-    <header className={`${headerClassName} page__header`}>
+    <header className={`${headerClassName}`}>
       <picture className='logo header__logo'>
-      <Logo classNamePath={logoClassName}/>
+      <Logo classNamePath={`logo_theme_${theme}`}/>
       </picture>
       <Navigation className='header__nav'>
 
         <Link
-          className={linkClassName}
-          activeClassName={linkActiveClassName}
+          className={`link_type_${theme}`}
+          activeClassName={`link_type_${theme}-active`}
           text={ 'Главная' }
           to={'/'}
           exact
@@ -45,22 +29,20 @@ export const Header = ({ className, loggedIn = true, path }) => {
 
         { loggedIn
           ? <Link
-            className={linkClassName}
-            activeClassName={linkActiveClassName}
+            className={`link_type_${theme}`}
+            activeClassName={`link_type_${theme}-active`}
             text={'Сохранённые статьи'}
             to={'/saved-news'}
         /> : null }
 
         <Link
-          className={linkAuthClassName}
+          className={`link_type_border link_type_border-${theme}`}
           text={ loggedIn ? 'Грета' : 'Авторизоваться' }
           to={'/foo'}
         >
-          { loggedIn && <EnterIcon classNamePath={
-            path === '/'
-              ? 'link__icon-white'
-              : 'link__icon-black'
-          }/> }
+          { loggedIn && <EnterIcon
+            classNamePath={`link__icon-${theme}`}
+          /> }
         </Link>
 
       </Navigation>

@@ -1,5 +1,4 @@
 .button {
-	position: relative;
 	color: #B6BCBF;
 	background-color: transparent;
 	box-shadow: none;
@@ -17,10 +16,6 @@
 	transition: opacity linear .2s;
 }
 
-.button:hover {
-	opacity: .7;
-}
-
 .button_type_search {
 	background: #2F71E5;
 	box-shadow: 0 5px 15px rgba(14, 26, 57, 0.2);
@@ -36,7 +31,6 @@
 
 .button_type_search:hover {
 	background-color: #347EFF;
-	opacity: 1;
 }
 
 .button_type_menu {
@@ -50,6 +44,10 @@
 	padding: 21px 84px;
 	margin: auto;
 	align-self: center;
+}
+
+.button_type_show-card:hover {
+	opacity: .7;
 }
 
 @media screen and (max-width: 1024px) {

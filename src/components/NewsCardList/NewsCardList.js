@@ -1,29 +1,25 @@
 import React, { useState } from "react";
 import './NewsCardList.css';
 import createClassName from '../../utils/createClassName';
-import data from '../../data/cardText.json';
 import { NewsCard } from "../NewsCard/NewsCard";
-import {Button} from "../Button/Button";
+import { Button } from "../Button/Button";
 
-export const NewsCardList = ({ className }) => {
+export const NewsCardList = ({className, cards}) => {
  const newsClassName = createClassName('news__items', className);
 
  const [numberOfCards, setNumberOfCards] = useState(3);
 
  const showMoreCards = () => setNumberOfCards(prevValue => prevValue + 3);
 
- const carsList = data.slice(0, numberOfCards).map(card =>
-   <NewsCard
-     key={card.id}
-     className={'news__item'}
-     id={ card.id }
-     title={ card.title }
-     text={ card.text }
-     source={ card.source }
-     data={ card.data }
-     path={ card.link }
- />
- );
+ const carsList = cards.slice(0, numberOfCards).map(card => {
+   const cardItem = {...card, saved: false};
+
+   return <NewsCard
+       key={card.id}
+       className={'news__item'}
+       card={ cardItem }
+     />
+ });
 
   return (
     <>

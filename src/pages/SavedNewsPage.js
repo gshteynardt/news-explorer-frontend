@@ -1,14 +1,19 @@
 import React from 'react';
 import { Header } from "../components/Header/Header";
+import { SavedNews } from "../components/SavedNews/SavedNews";
 
-export const SavedNewsPage = () => {
+export const SavedNewsPage = ({loggedIn, cards }) => {
 
   return (
-    <div style={{color: '#000'}}>
+    <>
       <Header
-        className={'header_theme_white'}
+        theme={'black'}
+        className={`header_theme_white`}
+        loggedIn={loggedIn}
       />
-      Saved news will be shown here
-    </div>
+      <SavedNews
+        cards={cards}
+      />
+    </>
   );
 }
