@@ -4,7 +4,7 @@ import { Button } from "../Button/Button";
 import { Logo } from "../Icons/Logo";
 import { EnterIcon } from "../Icons/LogoutIcon";
 import { Navigation } from "../Navigation/Navigation";
-import { Menu } from "../Icons/Menu";
+import { MenuIcon } from "../Icons/MenuIcon";
 import { Link } from "../Link/Link";
 import createClassName from "../../utils/createClassName";
 
@@ -50,7 +50,7 @@ export const Header = ({ className, loggedIn , theme }) => {
       <Button
         className={'button_type_menu'}
       >
-        <Menu/>
+        <MenuIcon/>
       </Button>
     </header>
   );

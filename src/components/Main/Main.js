@@ -4,7 +4,7 @@ import { NewsCardList } from "../NewsCardList/NewsCardList";
 import { Preloader } from "../Preloader/Preloader";
 import { About } from '../About/About';
 
-export const Main = ({error, isFound, cards}) => {
+export const Main = ({loggedIn, error, isFound, cards}) => {
 
   return (
     <>
@@ -16,7 +16,11 @@ export const Main = ({error, isFound, cards}) => {
         />
         : <section className={'wrapper-news'}>
         <NewsCardList
-         cards={cards}
+          loggedIn={loggedIn}
+          cards={cards}
+          title={'Результаты поиска'}
+          button={true}
+          initState={3}
         />
         </section>
         }

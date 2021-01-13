@@ -3,7 +3,7 @@ import { Main } from "../components/Main/Main";
 import {Header} from "../components/Header/Header";
 import {SearchForm} from "../components/SearchForm/SearchForm";
 
-export const MainPage = ({loggedIn, cards}) => {
+export const MainPage = ({loggedIn, cards, path}) => {
   const [error, setError] = useState(false);
   const [isFoundNews, setIsFoundNews] = useState(false);
 
@@ -24,7 +24,7 @@ export const MainPage = ({loggedIn, cards}) => {
     <>
       <section className='wrapper-search-header'>
         <Header
-          loggedIn={ loggedIn }
+          loggedIn={loggedIn}
           theme={'white'}
         />
         <SearchForm
@@ -33,9 +33,11 @@ export const MainPage = ({loggedIn, cards}) => {
       </section>
 
       <Main
+        loggedIn={loggedIn}
         error={error}
         isFound={isFoundNews}
         cards={cards}
+        path={path}
       />
       {/*Popup*/}
     </>

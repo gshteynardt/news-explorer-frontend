@@ -151,6 +151,19 @@
 
 @media screen and (max-width: 1024px) {
 	
+	.card__button:hover + .card__popup_prompt {
+		visibility: hidden;
+		display: none;
+	}
+	
+	.card__icon:hover .card__icon_bookmark {
+		stroke: #B6BCBF;
+	}
+	
+	.card__icon:hover .card__icon_delete {
+		fill: #B6BCBF;
+	}
+	
 	.card__caption {
 		padding: 16px;
 	}
@@ -175,6 +188,7 @@
 		right: 8px;
 	}
 	
+	
 	.card__popup_prompt {
 		top: 8px;
 		right: 48px;
@@ -187,6 +201,13 @@
 }
 
 @media screen and (max-width: 720px) {
+	.card__button:hover + .card__popup_prompt {
+		visibility: hidden;
+	}
+	
+	.card__popup_prompt {
+		visibility: hidden;
+	}
 	.card__title {
 		line-height: 26px;
 		-webkit-line-clamp: 2;
