@@ -5,7 +5,6 @@
 	border: none;
 	padding: 0;
 	cursor: pointer;
-	outline: none;
 	font-family: Roboto, sans-serif;
 	font-style: normal;
 	font-weight: 500;
@@ -13,7 +12,7 @@
 	line-height: 24px;
 	display: flex;
 	align-items: center;
-	transition: opacity linear .2s;
+	transition: .3s ease;
 }
 
 .button_type_search {

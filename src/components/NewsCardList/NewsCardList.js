@@ -16,6 +16,7 @@ export const NewsCardList = (props) => {
 
   const [numberOfCards, setNumberOfCards] = useState(initState);
   const newsClassName = createClassName('news__items', className);
+  const isLastCard = cards.length >= numberOfCards;
 
   const showMoreCards = () => setNumberOfCards(prevValue => prevValue + 3);
 
@@ -37,7 +38,7 @@ export const NewsCardList = (props) => {
         {carsList}
       </ul>
 
-      { button && <Button
+      { (button && isLastCard) && <Button
         text={'Показать еще'}
         className={'button_type_show-card'}
         onClick={showMoreCards}

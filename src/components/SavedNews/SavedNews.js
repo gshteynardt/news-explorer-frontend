@@ -10,6 +10,7 @@ export const SavedNews = ({ cards, loggedIn }) => {
       <NewsCardList
         cards={cards}
         loggedIn={loggedIn}
+        button={false}
       />
     </section>
   );

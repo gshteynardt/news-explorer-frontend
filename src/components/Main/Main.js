@@ -26,7 +26,6 @@ export const Main = ({loggedIn, error, isFound, cards}) => {
         }
       </main>
       <About/>
-      {/*<Footer/>*/}
     </>
   );
 }

@@ -14,7 +14,7 @@
 .news__item:hover {
 	box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
 	cursor: pointer;
-	transition: box-shadow linear .2s;
+	transition: .25s ease-out;
 }
 
 .card__caption {
@@ -90,16 +90,19 @@
 	line-height: 12px;
 	background-color: #fff;
 	border-radius: 10px;
-	margin: 0;
+	white-space: nowrap;
+	color: #1A1B22;
 }
 
 .card__popup_prompt {
-	top: 24px;
-	right: 64px;
+	right: 40px;
 	margin: 0 5px 0 0;
 	padding: 14px 12px;
-	visibility: hidden;
-	transition: visibility linear .2s;
+	transform-origin: right;
+	transform: scaleX(0);
+	transition: .25s ease-out;
+	opacity: 1;
+	z-index: 2;
 }
 
 .card__popup_keyword {
@@ -110,38 +113,24 @@
 	font-weight: 500;
 	font-size: 14px;
 	line-height: 24px;
+	margin: 0;
+	z-index: 1;
 }
 
-.card__icon {
+.card__button {
+	color: #B6BCBF;
 	position: absolute;
 	top: 24px;
 	right: 24px;
 }
 
-.card__icon_bookmark {
-	stroke: #B6BCBF;
-	transition: stroke linear .2s;
+.card__button:hover > .card__popup_prompt {
+	transform: scaleX(1);
+	opacity: 1;
 }
 
-.card__icon_marked {
-	fill: #2F71E5;
-}
-
-.card__icon:hover .card__icon_bookmark {
-	stroke: #1A1B22;
-}
-
-.card__icon_delete {
-	fill: #B6BCBF;
-	transition: fill linear .2s;
-}
-
-.card__icon:hover .card__icon_delete {
-	fill: #1A1B22;
-}
-
-.card__button:hover + .card__popup_prompt {
-	visibility: visible;
+.card__button:hover {
+	color: #1A1B22;
 }
 
 .card__link {
@@ -149,19 +138,14 @@
 	color: #1A1B22;
 }
 
+@media screen and (max-width: 1900px) {
+
+}
+
 @media screen and (max-width: 1024px) {
-	
-	.card__button:hover + .card__popup_prompt {
-		visibility: hidden;
-		display: none;
-	}
-	
-	.card__icon:hover .card__icon_bookmark {
-		stroke: #B6BCBF;
-	}
-	
-	.card__icon:hover .card__icon_delete {
-		fill: #B6BCBF;
+	.card__button:hover > .card__popup_prompt {
+		transform: scaleX(0);
+		opacity: 0;
 	}
 	
 	.card__caption {
@@ -183,11 +167,10 @@
 		bottom: 16px;
 	}
 	
-	.card__icon {
+	.card__button {
 		top: 8px;
 		right: 8px;
 	}
-	
 	
 	.card__popup_prompt {
 		top: 8px;
@@ -201,13 +184,10 @@
 }
 
 @media screen and (max-width: 720px) {
-	.card__button:hover + .card__popup_prompt {
-		visibility: hidden;
-	}
-	
 	.card__popup_prompt {
 		visibility: hidden;
 	}
+	
 	.card__title {
 		line-height: 26px;
 		-webkit-line-clamp: 2;
@@ -221,20 +201,6 @@
 		padding-bottom: 10px;
 	}
 	
-	.card__icon {
-		top: 16px;
-		right: 16px;
-	}
-	
-	.card__popup_prompt {
-		top: 16px;
-		right: 56px;
-	}
-	
-	.card__popup_keyword {
-		top: 16px;
-		left: 8px;
-	}
 }
 
 @media screen and (max-width: 600px) {

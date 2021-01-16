@@ -1,9 +1,8 @@
 import React from "react"
 
-export const Bookmark = ({classNameBtn, classNamePath}) => {
+export const Bookmark = ({isChecked}) => {
   return (
     <svg
-      className={classNameBtn}
       width={40}
       height={40}
       viewBox="0 0 40 40"
@@ -12,9 +11,10 @@ export const Bookmark = ({classNameBtn, classNamePath}) => {
     >
       <rect width={40} height={40} rx={8} fill="#fff" />
       <path
-        className={classNamePath}
         d="M19.382 23.714L14 27.943V12h12v15.942l-5.382-4.228-.618-.486-.618.486z"
+        stroke={'currentColor'}
         strokeWidth={2}
+        fill ={isChecked ? 'currentColor' : 'transparent'}
       />
     </svg>
   )

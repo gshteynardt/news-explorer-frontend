@@ -15,9 +15,11 @@ export const Header = ({ className, loggedIn , theme }) => {
   return (
     <header className={`${headerClassName}`}>
       <picture className='logo header__logo'>
-      <Logo classNamePath={`logo_theme_${theme}`}/>
+        <Logo classNamePath={`logo_theme_${theme}`}/>
       </picture>
-      <Navigation className='header__nav'>
+      <Navigation
+        classNameList={'nav__list_header'}
+      >
 
         <Link
           className={`link_type_${theme}`}

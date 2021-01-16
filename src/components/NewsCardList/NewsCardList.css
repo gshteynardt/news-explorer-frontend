@@ -30,8 +30,9 @@
 
 @media screen and (max-width: 720px) {
 	.news__items {
-		grid-template-columns: repeat(auto-fit, minmax(288px, 1fr));
+		grid-template-columns: repeat(auto-fit, 288px);
 		grid-auto-rows: 444px;
 		margin: 32px 0;
+		justify-content: center;
 	}
 }

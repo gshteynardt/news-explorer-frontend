@@ -1,11 +1,16 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import './NewsCard.css';
 import {Bookmark} from "../Icons/Bookmark";
 import {DeleteIcon} from "../Icons/DeleteIcon";
 import {Button} from "../Button/Button";
 import {useRouteMatch} from "react-router-dom";
+import {Checkbox} from "../Checkbox/Checkbox";
+import {CurrentUserContext} from "../../contexts/CurrentUserContext";
+import {ExternalLink} from "../Link/ExternalLink";
 
-export const NewsCard = ({card, loggedIn }) => {
+export const NewsCard = ({card}) => {
+  const currentUser = useContext(CurrentUserContext);
+
   const {
     keyword,
     title,
@@ -19,53 +24,35 @@ export const NewsCard = ({card, loggedIn }) => {
     id,
   } = card;
 
-  const { path } = useRouteMatch();
-
-  const btnMainClassName = saved && loggedIn ? 'card__icon_marked' : 'card__icon_bookmark';
-
-  const prompt = () => {
-    if (!loggedIn) {
-      return 'Войдите, чтобы сохранять статьи'
-    } else if ((loggedIn && saved) || path !== '/') {
-      return 'Убрать из сохранённых'
-    } else if (!saved) {
-      return 'Сохранить'
-    }
-  }
+  const loggedIn = Object.keys(currentUser).length !== 0;
+  const {path} = useRouteMatch();
 
   return (
     <li
       key={id}
       className={'news__item card'}
     >
-
       <figure className={'card__wrapper'}>
           {
             path !== '/'
-              ? <Button className={'card__button'}>
-                <DeleteIcon
-                  classNameBtn={'card__icon'}
-                  classNamePath={'card__icon_delete'}
-                />
+            ? <Button className={'card__button'}>
+                <DeleteIcon/>
+                <p className={'card__popup card__popup_prompt'}>
+                  Убрать из сохранённых
+                </p>
               </Button>
-
-              : <Button className={'card__button'} onClick={() => set}>
-                <Bookmark
-                  classNameBtn={'card__icon'}
-                  classNamePath={btnMainClassName}
-                />
-              </Button>
+            : <Checkbox
+              className={'card__button'}
+              loggedIn={loggedIn}
+            />
           }
-
-        <p className={'card__popup card__popup_prompt'}>{
-          prompt()
-        }</p>
 
         {
           keyword
           && <p className={'card__popup card__popup_keyword'}>{keyword}</p>
         }
-        <a
+
+        <ExternalLink
           className={'card__link'}
           href={'https://medium.com/'}
           target={'_blank'}
@@ -81,7 +68,7 @@ export const NewsCard = ({card, loggedIn }) => {
           <p className={'card__text'}>{text}</p>
           <p className={'card__source'}>{source}</p>
         </figcaption>
-        </a>
+        </ExternalLink>
       </figure>
     </li>
   );
