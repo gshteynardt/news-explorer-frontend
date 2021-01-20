@@ -12,6 +12,7 @@ export const SavedNewsPage = ({loggedIn, cards}) => {
           className={'navbar_theme_white'}
           theme={'black'}
           bgMenu={'white'}
+          loggedIn={loggedIn}
         />
       </Header>
       <div className={'saved-news__info wrapper__content'}>

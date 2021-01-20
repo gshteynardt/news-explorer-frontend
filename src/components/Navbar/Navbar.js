@@ -9,10 +9,13 @@ import {MenuIcon} from "../Icons/MenuIcon";
 import {CrossIcon} from "../Icons/CrossIcon";
 import createClassName from "../../utils/createClassName";
 
-export const Navbar = ({className, theme, bgMenu, loggedIn = true}) => {
-
+export const Navbar = ({className, theme, bgMenu, loggedIn, onLoginClick}) => {
   const[isOpen, setIsOpen] = useState(false);
   const navbarClassName = createClassName('navbar', className)
+
+  const handleAuthClick = () => {
+    onLoginClick();
+  }
 
   return (
     <div className={`${navbarClassName} ${isOpen && `navbar_theme_${bgMenu}`}`}>
@@ -31,27 +34,27 @@ export const Navbar = ({className, theme, bgMenu, loggedIn = true}) => {
           exact
         />
 
-        { loggedIn
-          ? <Link
+        { loggedIn && <Link
             className={`link_type_${theme} header__link`}
             activeClassName={`link_type_${theme}-active`}
             text={'Сохранённые статьи'}
             to={'/saved-news'}
-          /> : null }
+          /> }
 
-        <Link
-          className={`link_type_border link_type_border-${theme} header__link`}
+        <Button
+          className={`button_type_header button_type_header-${theme} header__button`}
           text={ loggedIn ? 'Грета' : 'Авторизоваться' }
           to={'/foo'}
+          onClick={handleAuthClick}
         >
           { loggedIn && <EnterIcon
             classNamePath={`link__icon-${theme}`}
           /> }
-        </Link>
+        </Button>
 
       </Navigation>
       <Button
-        className={'button_type_menu'}
+        className={`button_type_menu button_type_menu-${theme}`}
         onClick={() => setIsOpen(!isOpen)}
       >
         {

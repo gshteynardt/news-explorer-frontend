@@ -1,6 +1,6 @@
 import React from "react";
 import './SearchForm.css';
-import { Form } from "../Form/Form";
+import { Form } from "../Forms/Form";
 import { Input } from "../Input/Input";
 import { Button } from "../Button/Button";
 

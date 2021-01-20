@@ -1,8 +1,16 @@
 import React from "react";
 import './Form.css';
 import createClassName from "../../utils/createClassName";
+import {Button} from "../Button/Button";
 
-export const Form = ({ className, onSubmit, children }) => {
+export const Form = (
+  { className,
+    classNameBtn,
+    onSubmit,
+    children,
+    textSubmitBtn,
+    disabled,
+  }) => {
 
   const formClassName = createClassName('form', className);
 
@@ -17,6 +25,15 @@ export const Form = ({ className, onSubmit, children }) => {
       onSubmit={ handleSearch }
     >
       { children }
+
+      <span className="form__message"></span>
+
+      <Button
+        type={'submit'}
+        className={classNameBtn}
+        disabled={disabled}
+        text={textSubmitBtn}
+      />
     </form>
   );
 }

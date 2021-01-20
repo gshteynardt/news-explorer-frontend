@@ -10,7 +10,9 @@ import cardsFromSearch from '../../data/searchCards.json';
 import cardsIsSaved from '../../data/savedCars.json';
 
 const App = () => {
-  const [loggedIn, setLoggedIn] = useState(true);
+
+  //Поменять state loggedIn = false для отображения работы popup
+  const [loggedIn, setLoggedIn] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const [userData, setUserData] = useState({});

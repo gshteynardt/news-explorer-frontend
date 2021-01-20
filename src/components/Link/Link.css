@@ -55,24 +55,6 @@
 	padding-bottom: 47px;
 }
 
-.link_type_border {
-	display: inline-flex;
-	align-items: center;
-	justify-content: center;
-	box-sizing: border-box;
-	border-radius: 100px;
-	padding: 12px 19px;
-}
-
-.link_type_border-white {
-	border: 1px solid #FFFFFF;
-	color: #fff;
-}
-
-.link_type_border-black {
-	border: 1px solid #1A1B22;
-	color: #1A1B22;
-}
 
 .link__icon-white {
 	fill: #fff;

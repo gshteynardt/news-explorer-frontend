@@ -37,7 +37,8 @@
 		transform: scaleY(0);
 		opacity: 0;
 		grid-auto-flow: row;
-		grid-template-rows: repeat(3, minmax(min-content, max-content));
+		grid-template-rows: repeat(2, minmax(min-content, max-content));
+		grid-auto-rows: max-content;
 		row-gap: 44px;
 		width: 100%;
 		padding: 37px 16px 24px;

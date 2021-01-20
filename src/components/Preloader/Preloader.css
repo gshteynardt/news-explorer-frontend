@@ -7,15 +7,25 @@
 }
 
 .circle-preloader {
+	position: relative;
 	display: block;
-	width: 74px;
-	height: 74px;
-	border: 1px solid;
-	border-image-slice: 1;
-	border-image-source: linear-gradient(to left, #D1D2D6, #1A1B22);
+	width: 50px;
+	height: 50px;
+	background: conic-gradient(#F5F6F7, #000);
 	border-radius: 50%;
-	box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
-	animation: spin .75s infinite linear;
+	animation: spin 1s infinite linear;
+}
+
+.circle-preloader::after {
+	content: "";
+	position: absolute;
+	background-color: #F5F6F7;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	width: 48px;
+	height: 48px;
+	border-radius: 50%;
 }
 
 .circle__info {
