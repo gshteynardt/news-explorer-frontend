@@ -29,7 +29,7 @@
 .footer__link {
 	font-style: normal;
 	font-size: 18px;
-  line-height: 24px;
+	line-height: 24px;
 	color: #1A1B22;
 }
 
@@ -39,7 +39,7 @@
 	}
 }
 
-@media screen and (max-width: 720px) {
+@media screen and (width <= 720px) {
 	.footer {
 		grid-template-areas:
 		  "links"
@@ -48,7 +48,7 @@
 	}
 	
 	.footer__nav {
-	  justify-content: space-between;
+		justify-content: space-between;
 		grid-gap: 24px;
 	}
 	

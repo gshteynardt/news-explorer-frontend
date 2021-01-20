@@ -1,0 +1,44 @@
+.navbar {
+	width: inherit;
+	display: flex;
+	justify-content: space-between;
+	padding: 19px 104px 13px;
+}
+
+.logo_theme_white {
+	fill: #fff;
+}
+
+.logo_theme_black {
+	fill: #000;
+}
+
+.navbar_theme_white {
+	background-color: #fff;
+}
+
+.navbar_theme_black {
+	background-color: #1A1B22;
+}
+
+.navbar_bg-black {
+	background-color: #1A1B22;
+	border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.navbar_bg-white {
+	background-color: #fff;
+	border-top: 1px solid #D1D2D6;
+}
+
+@media screen and (max-width: 1024px) {
+	.navbar {
+		padding: 19px 40px 13px;
+	}
+}
+
+@media screen and (max-width: 480px) {
+	.navbar {
+		padding: 16px;
+	}
+}

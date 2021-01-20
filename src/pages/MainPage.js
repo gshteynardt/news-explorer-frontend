@@ -2,6 +2,7 @@ import React, {useState} from "react";
 import { Main } from "../components/Main/Main";
 import {Header} from "../components/Header/Header";
 import {SearchForm} from "../components/SearchForm/SearchForm";
+import {Navbar} from "../components/Navbar/Navbar";
 
 export const MainPage = ({loggedIn, cards, path}) => {
   const [error, setError] = useState(false);
@@ -25,8 +26,12 @@ export const MainPage = ({loggedIn, cards, path}) => {
       <section className='wrapper-search-header'>
         <Header
           loggedIn={loggedIn}
-          theme={'white'}
-        />
+        >
+          <Navbar
+            theme={'white'}
+            bgMenu={'black'}
+          />
+        </Header>
         <SearchForm
           onSubmit={ onSubmit }
         />

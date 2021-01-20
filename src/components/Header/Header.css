@@ -1,16 +1,6 @@
 .header {
-	display: flex;
-	justify-content: space-between;
-	padding: 19px 104px 13px;
 	border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-}
-
-.logo_theme_white {
- fill: #fff;
-}
-
-.logo_theme_black {
-	fill: #000;
+	min-height: 63px;
 }
 
 .header__logo {
@@ -18,19 +8,16 @@
 	align-items: center;
 }
 
-.header_theme_white {
-  background-color: #fff;
-	border-bottom: 1px solid #D1D2D6;
-}
-
-@media screen and (max-width: 1024px) {
-	.header {
-		padding: 14px 40px 12px;
+@media screen and (width <= 720px) {
+	.header__nav {
+		position: absolute;
+		left: 0;
+		top: 63px;
+		z-index: 100;
+		box-sizing: border-box;
 	}
-}
-
-@media screen and (max-width: 480px) {
-	.header {
-		padding: 16px;
+	
+	.header__link {
+		width: 100%;
 	}
 }
