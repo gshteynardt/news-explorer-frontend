@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import './Popup.css';
-import {Button} from "../Button/Button";
-import {CloseIcon} from "../Icons/CloseIcon";
+import { Button } from "../Button/Button";
+import { CrossIcon } from "../Icons/CrossIcon";
 
 export const Popup = ({ isOpen, onClose, children }) => {
 
@@ -25,7 +25,7 @@ export const Popup = ({ isOpen, onClose, children }) => {
           className={"button__close-popup"}
           onClick={onClose}
         >
-          <CloseIcon/>
+          <CrossIcon/>
         </Button>
         {children}
       </div>

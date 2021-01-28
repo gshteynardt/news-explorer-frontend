@@ -13,9 +13,9 @@ export const Input = (
 
   return (
     <label className={`label ${title && 'label_type_form'}`}>
-      <p className="label__title">
+      <span className="label__title">
         {title}
-      </p>
+      </span>
       <input
         className={inputClassName}
         name={ name }

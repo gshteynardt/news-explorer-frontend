@@ -19,6 +19,7 @@ export const SearchForm = ({onSubmit}) => {
         onSubmit={onSubmit}
       >
         <Input
+          required={true}
           className={'input_type_search'}
           placeholder={'Введите тему новости'}
         />

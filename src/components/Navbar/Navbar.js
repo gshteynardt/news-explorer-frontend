@@ -44,7 +44,6 @@ export const Navbar = ({className, theme, bgMenu, loggedIn, onLoginClick}) => {
         <Button
           className={`button_type_header button_type_header-${theme} header__button`}
           text={ loggedIn ? 'Грета' : 'Авторизоваться' }
-          to={'/foo'}
           onClick={handleAuthClick}
         >
           { loggedIn && <EnterIcon
