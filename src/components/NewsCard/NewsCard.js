@@ -49,7 +49,7 @@ export const NewsCard = ({card}) => {
 
         {
           keyword
-          && <p className={'card__popup card__popup_keyword'}>{keyword}</p>
+          && (<p className={'card__popup card__popup_keyword'}>{keyword}</p>)
         }
 
         <ExternalLink

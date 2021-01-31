@@ -17,3 +17,4 @@ export const Button = ({ text, className, children, onClick, ...rest }) => {
     </button>
   );
 }
+
