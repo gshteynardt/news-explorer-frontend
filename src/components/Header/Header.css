@@ -1,0 +1,23 @@
+.header {
+	border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+	min-height: 63px;
+}
+
+.header__logo {
+	display: flex;
+	align-items: center;
+}
+
+@media screen and (width <= 720px) {
+	.header__nav {
+		position: absolute;
+		left: 0;
+		top: 63px;
+		z-index: 100;
+		box-sizing: border-box;
+	}
+	
+	.header__button {
+		width: 100%;
+	}
+}
