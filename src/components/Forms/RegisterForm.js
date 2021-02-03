@@ -1,10 +1,45 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import './Form.css';
-import {Input} from "../Input/Input";
-import {Button} from "../Button/Button";
-import {Form} from "./Form";
+import { Input } from "../Input/Input";
+import { Button } from "../Button/Button";
+import { Form } from "./Form";
+import { useFormWithValidation } from "../../hooks/useForm";
+import * as auth from '../../utils/auth.js';
 
-export const RegisterForm = ({ openLogin }) => {
+const errorMessage = 'Такой пользователь уже есть';
+
+const keyObj = {
+  email: '',
+  password: '',
+  name: '',
+};
+
+export const RegisterForm = ({ openLogin, onClose, isSuccess }) => {
+  const [error, setError] = useState(null);
+
+  const handleForm = async (userData) => {
+    try {
+      const res = await auth.register({...userData});
+      if(res.data) {
+        onClose();
+        isSuccess();
+      }
+    } catch (err) {
+      console.log({ message: 'Что-то пошло не так' }, err);
+      setError(errorMessage);
+    }
+  }
+
+  const {
+    values,
+    handleChange,
+    errors,
+    resetForm,
+    handleSubmit,
+    isFormValid,
+  } = useFormWithValidation(keyObj, handleForm);
+
+  useEffect(() => resetForm, []);
 
   return (
     <>
@@ -13,7 +48,9 @@ export const RegisterForm = ({ openLogin }) => {
         className="form__submit"
         classNameBtn={'button_type_submit'}
         textSubmitBtn={'Зарегистрироваться'}
-        disabled={'disabled'}
+        disabled={isFormValid ? '' : 'disabled'}
+        errorMessage={error}
+        onSubmit={handleSubmit}
       >
         <Input
           className={'input_type_form'}
@@ -21,13 +58,24 @@ export const RegisterForm = ({ openLogin }) => {
           required={true}
           placeholder="Введите почту"
           type="email"
+          name={'email'}
+          value={values.email}
+          onChange={handleChange}
+          isError={errors.email}
+          errorMessage={'Неверный формат email'}
         />
         <Input
           className={'input_type_form'}
           title="Пароль"
           required={true}
+          minLength={'6'}
           placeholder="Введите пароль"
           type="password"
+          name={'password'}
+          value={values.password}
+          onChange={handleChange}
+          isError={errors.password}
+          errorMessage={'Пароль должен быть не менее 6 символов'}
         />
         <Input
           className={'input_type_form'}
@@ -37,6 +85,11 @@ export const RegisterForm = ({ openLogin }) => {
           type="text"
           minLength="2"
           maxLength="30"
+          name='name'
+          value={values.name}
+          onChange={handleChange}
+          isError={errors.name}
+          errorMessage={'Имя должно быть не менее 2 символов'}
         />
       </Form>
       <p className="popup__link">или&nbsp;

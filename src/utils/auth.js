@@ -9,18 +9,17 @@ const handleResponse = (res) => {
   return res.json();
 }
 
-export const register = (email, password) => fetch(`${BASE_URL}/signup`, {
-  method: 'POST',
-  headers: {
-    'Accept': 'application/json',
-    'Content-Type': 'application/json',
-  },
-  body: JSON.stringify({ email, password }),
-})
-  .then(res => handleResponse(res));
+export const register = ({email, password, name}) => fetch(`${BASE_URL}/signup`, {
+    method: 'POST',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({email, password, name}),
+  })
+    .then(res => handleResponse(res));
 
-
-export const login = (email, password) => fetch(`${BASE_URL}/signin`, {
+export const login = ({email, password}) => fetch(`${BASE_URL}/signin`, {
   method: 'POST',
   headers: {
     Accept: 'application/json',

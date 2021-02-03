@@ -9,7 +9,18 @@ import {MenuIcon} from "../Icons/MenuIcon";
 import {CrossIcon} from "../Icons/CrossIcon";
 import createClassName from "../../utils/createClassName";
 
-export const Navbar = ({className, theme, bgMenu, loggedIn, onLoginClick}) => {
+export const Navbar = (props) => {
+
+  const {
+    className,
+    theme,
+    bgMenu,
+    isLogin,
+    onLoginClick,
+    name,
+    ...rest
+  } = props;
+
   const[isOpen, setIsOpen] = useState(false);
   const navbarClassName = createClassName('navbar', className)
 
@@ -34,7 +45,7 @@ export const Navbar = ({className, theme, bgMenu, loggedIn, onLoginClick}) => {
           exact
         />
 
-        { loggedIn && <Link
+        { isLogin && <Link
             className={`link_type_${theme} header__link`}
             activeClassName={`link_type_${theme}-active`}
             text={'Сохранённые статьи'}
@@ -43,10 +54,10 @@ export const Navbar = ({className, theme, bgMenu, loggedIn, onLoginClick}) => {
 
         <Button
           className={`button_type_header button_type_header-${theme} header__button`}
-          text={ loggedIn ? 'Грета' : 'Авторизоваться' }
+          text={ isLogin ? {name} : 'Авторизоваться' }
           onClick={handleAuthClick}
         >
-          { loggedIn && <EnterIcon
+          { isLogin && <EnterIcon
             classNamePath={`link__icon-${theme}`}
           /> }
         </Button>

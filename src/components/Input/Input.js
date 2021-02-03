@@ -5,8 +5,10 @@ import createClassName from '../../utils/createClassName';
 export const Input = (
   { name,
     className,
-    handleChange,
+    onChange,
     title,
+    isError,
+    errorMessage,
     ...rest }) => {
 
   const inputClassName = createClassName('input', className);
@@ -18,11 +20,13 @@ export const Input = (
       </span>
       <input
         className={inputClassName}
-        name={ name }
-        onChange={handleChange}
+        name={name}
+        onChange={onChange}
         {...rest}
         />
-      <span className="input__error"></span>
+      {
+        isError && (<span className="input__error">{errorMessage}</span>)
+      }
     </label>
    );
 }

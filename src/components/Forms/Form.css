@@ -10,6 +10,17 @@
 	width: 100%;
 	max-width: 608px;
 	position: relative;
+	flex-direction: row;
+}
+
+.form__message {
+	font-family: 'Inter', sans-serif;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 12px;
+	line-height: 15px;
+	color: #FF0000;
+	margin: 8px 0 8px;
 }
 
 @media screen and (max-width: 720px) {

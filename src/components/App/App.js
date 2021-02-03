@@ -1,44 +1,46 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import './App.css';
 import { Route, Switch, Redirect } from "react-router-dom";
 import { MainPage } from "../../pages/MainPage";
 import { SavedNewsPage } from "../../pages/SavedNewsPage";
 import { Footer } from "../Footer/Footer";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
-import currentUser from '../../data/userData.json';
 import cardsFromSearch from '../../data/searchCards.json';
 import cardsIsSaved from '../../data/savedCars.json';
+import ProtectedRoute from "../../hooks/ProtectedRoute";
+import {useUser} from "../../hooks/useUser";
+import {Preloader} from "../Preloader/Preloader";
 
 const App = () => {
+  const { loading, state } = useUser();
 
-  //Поменять state loggedIn = false для отображения работы popup
-  const [loggedIn, setLoggedIn] = useState(false);
-  const [isSuccess, setIsSuccess] = useState(false);
-  const [isOpen, setIsOpen] = useState(false);
-  const [userData, setUserData] = useState({});
+  const isLogin = !!state;
+
   const [searchCards, setSearchCards] = useState(cardsFromSearch);
   const [savedCards, setSavedCards] = useState(cardsIsSaved);
 
-  useEffect(() => setUserData(currentUser), []);
-
+  if (loading) {
+    return (<Preloader/>);
+  }
   return (
     <div className="page">
-      <CurrentUserContext.Provider value={userData}>
+      <CurrentUserContext.Provider value={''}>
         <Switch>
 
           <Route exact path={'/'}>
             <MainPage
-              loggedIn={loggedIn}
               cards={searchCards}
             />
           </Route>
 
-          <Route path={'/saved-news'}>
+          <ProtectedRoute
+            path={'/saved-news'}
+            loggedIn={isLogin}
+          >
             <SavedNewsPage
-              loggedIn={loggedIn}
               cards={savedCards}
             />
-          </Route>
+          </ProtectedRoute>
 
           <Route path="*">
             <Redirect to="/" />

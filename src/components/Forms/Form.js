@@ -10,23 +10,19 @@ export const Form = (
     children,
     textSubmitBtn,
     disabled,
+    errorMessage,
   }) => {
 
   const formClassName = createClassName('form', className);
 
-  const handleSearch = (e) => {
-    e.preventDefault();
-    onSubmit();
-  }
-
   return (
     <form
       className={ formClassName }
-      onSubmit={ handleSearch }
+      onSubmit={ onSubmit }
     >
       { children }
 
-      <span className="form__message"></span>
+      <span className="form__message">{errorMessage}</span>
 
       <Button
         type={'submit'}
