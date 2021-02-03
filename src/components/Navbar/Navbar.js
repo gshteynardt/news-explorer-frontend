@@ -8,16 +8,18 @@ import {Button} from "../Button/Button";
 import {MenuIcon} from "../Icons/MenuIcon";
 import {CrossIcon} from "../Icons/CrossIcon";
 import createClassName from "../../utils/createClassName";
+import {useUser} from "../../hooks/useUser";
 
 export const Navbar = (props) => {
+  const { user } = useUser();
+  const isLogin = !!user;
+  const name = user?.name;
 
   const {
     className,
     theme,
     bgMenu,
-    isLogin,
     onLoginClick,
-    name,
     ...rest
   } = props;
 
@@ -54,7 +56,7 @@ export const Navbar = (props) => {
 
         <Button
           className={`button_type_header button_type_header-${theme} header__button`}
-          text={ isLogin ? {name} : 'Авторизоваться' }
+          text={ isLogin ? name : 'Авторизоваться' }
           onClick={handleAuthClick}
         >
           { isLogin && <EnterIcon

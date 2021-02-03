@@ -7,12 +7,8 @@ import {Popup} from "../components/Popup/Popup";
 import {LoginForm} from "../components/Forms/LoginForm";
 import {Button} from "../components/Button/Button";
 import {RegisterForm} from "../components/Forms/RegisterForm";
-import {useUser} from "../hooks/useUser";
 
 export const MainPage = ({ cards }) => {
-  const { state } = useUser();
-  const isLogin = !!state?.user;
-  const name = state?.user?.name;
 
   const [popup, setPopup] = useState({
     isOpen: false,
@@ -61,8 +57,6 @@ const handleOpenPopupLogin = () => setPopup({
             theme={'white'}
             bgMenu={'black'}
             onLoginClick={handleOpenPopupLogin}
-            name={name}
-            isLogin={isLogin}
           />
         </Header>
         <SearchForm

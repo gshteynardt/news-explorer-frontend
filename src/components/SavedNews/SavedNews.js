@@ -3,13 +3,13 @@ import './SavedNews.css';
 
 import { NewsCardList } from "../NewsCardList/NewsCardList";
 
-export const SavedNews = ({ cards, loggedIn }) => {
+export const SavedNews = ({ cards, isLogin }) => {
 
   return (
     <section className={'saved-news wrapper__content'}>
       <NewsCardList
         cards={cards}
-        loggedIn={loggedIn}
+        isLogin={isLogin}
         button={false}
       />
     </section>

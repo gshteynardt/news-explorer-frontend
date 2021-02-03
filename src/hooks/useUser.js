@@ -19,7 +19,7 @@ export const UserProvider = ({ children }) => {
       console.log(err)
     } finally {
       setState({
-        user: null,
+        user: fetchedUser,
         loading: false,
       })
     }
@@ -30,7 +30,7 @@ export const UserProvider = ({ children }) => {
   }, []);
 
   return(
-    <CurrentUserContext.Provider value={{state, getUser}}>
+    <CurrentUserContext.Provider value={{...state, getUser}}>
       {children}
     </CurrentUserContext.Provider>
   )

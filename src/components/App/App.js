@@ -12,9 +12,9 @@ import {useUser} from "../../hooks/useUser";
 import {Preloader} from "../Preloader/Preloader";
 
 const App = () => {
-  const { loading, state } = useUser();
+  const { loading, user } = useUser();
 
-  const isLogin = !!state;
+  const isLogin = !!user;
 
   const [searchCards, setSearchCards] = useState(cardsFromSearch);
   const [savedCards, setSavedCards] = useState(cardsIsSaved);
@@ -35,7 +35,7 @@ const App = () => {
 
           <ProtectedRoute
             path={'/saved-news'}
-            loggedIn={isLogin}
+            isLogin={isLogin}
           >
             <SavedNewsPage
               cards={savedCards}

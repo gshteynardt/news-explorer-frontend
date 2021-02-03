@@ -3,6 +3,7 @@ import './NewsCardList.css';
 import createClassName from '../../utils/createClassName';
 import {NewsCard} from "../NewsCard/NewsCard";
 import {Button} from "../Button/Button";
+import {useUser} from "../../hooks/useUser";
 
 export const NewsCardList = (props) => {
   const {
@@ -13,6 +14,9 @@ export const NewsCardList = (props) => {
     button,
     initState
   } = props;
+
+  const { user } = useUser();
+  const isLogin = !!user;
 
   const [numberOfCards, setNumberOfCards] = useState(initState);
   const newsClassName = createClassName('news__items', className);
@@ -25,7 +29,7 @@ export const NewsCardList = (props) => {
       key={card.id}
       className={'news__item'}
       card={card}
-      loggedIn={loggedIn}
+      isLogin={isLogin}
     />
    });
 

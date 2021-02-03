@@ -1,15 +1,12 @@
-import React, {useContext} from 'react';
+import React from 'react';
 import './NewsCard.css';
-import {Bookmark} from "../Icons/Bookmark";
 import {DeleteIcon} from "../Icons/DeleteIcon";
 import {Button} from "../Button/Button";
 import {useRouteMatch} from "react-router-dom";
 import {Checkbox} from "../Checkbox/Checkbox";
-import {CurrentUserContext} from "../../contexts/CurrentUserContext";
 import {ExternalLink} from "../Link/ExternalLink";
 
-export const NewsCard = ({card}) => {
-  const currentUser = useContext(CurrentUserContext);
+export const NewsCard = ({card, isLogin}) => {
 
   const {
     keyword,
@@ -24,7 +21,6 @@ export const NewsCard = ({card}) => {
     id,
   } = card;
 
-  const loggedIn = Object.keys(currentUser).length !== 0;
   const {path} = useRouteMatch();
 
   return (
@@ -43,7 +39,7 @@ export const NewsCard = ({card}) => {
               </Button>
             : <Checkbox
               className={'card__button'}
-              loggedIn={loggedIn}
+              isLogin={isLogin}
             />
           }
 
