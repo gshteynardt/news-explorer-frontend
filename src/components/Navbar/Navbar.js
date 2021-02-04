@@ -20,6 +20,7 @@ export const Navbar = (props) => {
     theme,
     bgMenu,
     onLoginClick,
+    logOut,
     ...rest
   } = props;
 
@@ -57,7 +58,7 @@ export const Navbar = (props) => {
         <Button
           className={`button_type_header button_type_header-${theme} header__button`}
           text={ isLogin ? name : 'Авторизоваться' }
-          onClick={handleAuthClick}
+          onClick={isLogin ? logOut : handleAuthClick}
         >
           { isLogin && <EnterIcon
             classNamePath={`link__icon-${theme}`}

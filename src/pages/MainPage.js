@@ -8,7 +8,7 @@ import {LoginForm} from "../components/Forms/LoginForm";
 import {Button} from "../components/Button/Button";
 import {RegisterForm} from "../components/Forms/RegisterForm";
 
-export const MainPage = ({ cards }) => {
+export const MainPage = ({ cards, logOut }) => {
 
   const [popup, setPopup] = useState({
     isOpen: false,
@@ -57,6 +57,7 @@ const handleOpenPopupLogin = () => setPopup({
             theme={'white'}
             bgMenu={'black'}
             onLoginClick={handleOpenPopupLogin}
+            logOut={logOut}
           />
         </Header>
         <SearchForm

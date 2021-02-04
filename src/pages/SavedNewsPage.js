@@ -4,7 +4,7 @@ import { SavedNews } from "../components/SavedNews/SavedNews";
 import {Navbar} from "../components/Navbar/Navbar";
 import {useUser} from "../hooks/useUser";
 
-export const SavedNewsPage = ({cards}) => {
+export const SavedNewsPage = ({cards, logOut}) => {
   const { user } = useUser();
   const name = user?.name;
 
@@ -15,6 +15,7 @@ export const SavedNewsPage = ({cards}) => {
           className={'navbar_theme_white'}
           theme={'black'}
           bgMenu={'white'}
+          logOut={logOut}
         />
       </Header>
       <div className={'saved-news__info wrapper__content'}>

@@ -5,15 +5,17 @@ import App from './components/App/App';
 import { BrowserRouter as Router } from "react-router-dom";
 import {UserProvider} from "./hooks/useUser";
 
-const app = (<UserProvider>
-  <App/>
-</UserProvider>);
+const app = (
+  <Router>
+    <UserProvider>
+      <App/>
+    </UserProvider>
+  </Router>
+    );
 
 ReactDOM.render(
   <React.StrictMode>
-    <Router>
       { app }
-    </Router>
   </React.StrictMode>,
   document.getElementById('root')
 );

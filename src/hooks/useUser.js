@@ -14,7 +14,6 @@ export const UserProvider = ({ children }) => {
     let fetchedUser = null;
     try {
       fetchedUser = await auth.checkToken(inputToken);
-      console.log(fetchedUser)
     } catch (err) {
       console.log(err)
     } finally {

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './App.css';
-import { Route, Switch, Redirect } from "react-router-dom";
+import {Route, Switch, Redirect, useHistory} from "react-router-dom";
 import { MainPage } from "../../pages/MainPage";
 import { SavedNewsPage } from "../../pages/SavedNewsPage";
 import { Footer } from "../Footer/Footer";
@@ -11,6 +11,7 @@ import ProtectedRoute from "../../hooks/ProtectedRoute";
 import {useUser} from "../../hooks/useUser";
 import {Preloader} from "../Preloader/Preloader";
 
+
 const App = () => {
   const { loading, user } = useUser();
 
@@ -18,6 +19,12 @@ const App = () => {
 
   const [searchCards, setSearchCards] = useState(cardsFromSearch);
   const [savedCards, setSavedCards] = useState(cardsIsSaved);
+  const history = useHistory();
+
+  const logOut = () => {
+    localStorage.clear();
+    history.push('./')
+  };
 
   if (loading) {
     return (<Preloader/>);
@@ -30,6 +37,7 @@ const App = () => {
           <Route exact path={'/'}>
             <MainPage
               cards={searchCards}
+              logOut={logOut}
             />
           </Route>
 
@@ -38,6 +46,7 @@ const App = () => {
             isLogin={isLogin}
           >
             <SavedNewsPage
+              logOut={logOut}
               cards={savedCards}
             />
           </ProtectedRoute>
