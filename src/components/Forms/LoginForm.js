@@ -7,6 +7,7 @@ import {useFormWithValidation} from "../../hooks/useForm";
 import * as auth from "../../utils/auth";
 import { token } from "../../utils/Token";
 import { useUser } from "../../hooks/useUser";
+import {newsApi} from "../../utils/NewsApi";
 
 const keyObj = {
   email: '',
