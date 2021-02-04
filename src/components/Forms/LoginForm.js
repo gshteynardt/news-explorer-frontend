@@ -15,9 +15,8 @@ const keyObj = {
 
 const errorMessage = 'Неверно указанны данные';
 
-export const LoginForm = ({openRegister, onClose}) => {
+export const LoginForm = ({openRegister, onClose, isOpen}) => {
   const [error, setError] = useState(null);
-
   const { getUser } = useUser();
 
   const handleOnClick = () => openRegister();
@@ -49,14 +48,16 @@ export const LoginForm = ({openRegister, onClose}) => {
     isFormValid,
   } = useFormWithValidation(keyObj, handleForm);
 
-  useEffect(() => resetForm, []);
+  useEffect(() => {
+    resetForm()
+  }, [isOpen]);
 
   return (
     <>
       <Form
         classNameBtn={'button_type_submit'}
         textSubmitBtn={'Войти'}
-        disabled={false}
+        disabled={!isFormValid}
         errorMessage={error}
         onSubmit={handleSubmit}
       >
@@ -77,6 +78,7 @@ export const LoginForm = ({openRegister, onClose}) => {
           title="Пароль"
           required={true}
           placeholder="Введите пароль"
+          minLength={'6'}
           type="password"
           name={'password'}
           value={values.password}

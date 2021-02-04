@@ -3,10 +3,11 @@ import { useState, useCallback } from "react";
 export const useFormWithValidation = ({...keyObj}, callback) => {
   const [values, setValues] = useState(keyObj);
   const [errors, setErrors] = useState({});
-  const [isValid, setIsValid] = useState(false);
+  const [isValid, setIsValid] = useState({});
 
-  let isFormValid = Object.values(isValid).every(elem => elem === true);
+  let isFormValid = Object.values(isValid).every(Boolean);
 
+  console.log(isFormValid, isValid)
   const handleChange = (event) => {
     const { name, value, validationMessage, validity } = event.target;
 
@@ -27,7 +28,7 @@ export const useFormWithValidation = ({...keyObj}, callback) => {
   };
 
   const resetForm = useCallback(
-    (newValues = {}, newErrors = {}, newIsValid = false) => {
+    (newValues = keyObj, newErrors = {}, newIsValid = keyObj) => {
       setValues(newValues);
       setErrors(newErrors);
       setIsValid(newIsValid);

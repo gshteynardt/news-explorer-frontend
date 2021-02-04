@@ -14,7 +14,15 @@ const keyObj = {
   name: '',
 };
 
-export const RegisterForm = ({ openLogin, onClose, isSuccess }) => {
+export const RegisterForm = (props) => {
+
+  const {
+    openLogin,
+    onClose,
+    isSuccess,
+    isOpen,
+  } = props;
+
   const [error, setError] = useState(null);
 
   const handleForm = async (userData) => {
@@ -39,7 +47,7 @@ export const RegisterForm = ({ openLogin, onClose, isSuccess }) => {
     isFormValid,
   } = useFormWithValidation(keyObj, handleForm);
 
-  useEffect(() => resetForm, []);
+  useEffect(() => resetForm(), [isOpen]);
 
   return (
     <>
@@ -48,7 +56,7 @@ export const RegisterForm = ({ openLogin, onClose, isSuccess }) => {
         className="form__submit"
         classNameBtn={'button_type_submit'}
         textSubmitBtn={'Зарегистрироваться'}
-        disabled={isFormValid ? '' : 'disabled'}
+        disabled={!isFormValid}
         errorMessage={error}
         onSubmit={handleSubmit}
       >

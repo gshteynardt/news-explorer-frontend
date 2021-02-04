@@ -19,6 +19,7 @@ export const Form = (
     <form
       className={ formClassName }
       onSubmit={ onSubmit }
+      noValidate
     >
       { children }
 

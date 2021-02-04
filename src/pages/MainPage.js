@@ -75,6 +75,7 @@ const handleOpenPopupLogin = () => setPopup({
           <>
             <h3 className="popup__title">Вход</h3>
             <LoginForm
+              isOpen={popup.isOpen}
               openRegister={handleOpenPopupRegister}
               onClose={onClosePopup}
             />
@@ -88,7 +89,7 @@ const handleOpenPopupLogin = () => setPopup({
             <>
               <h3 className="popup__title">Регистрация</h3>
               <RegisterForm
-                setPopup={setPopup}
+                isOpen={popup.isOpen}
                 openLogin={handleOpenPopupLogin}
                 onClose={onClosePopup}
                 isSuccess={openSuccessPopup}
