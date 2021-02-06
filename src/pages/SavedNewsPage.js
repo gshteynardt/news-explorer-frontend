@@ -4,7 +4,7 @@ import { SavedNews } from "../components/SavedNews/SavedNews";
 import {Navbar} from "../components/Navbar/Navbar";
 import {useUser} from "../hooks/useUser";
 
-export const SavedNewsPage = ({cards, logOut}) => {
+export const SavedNewsPage = ({logOut}) => {
   const { user } = useUser();
   const name = user?.name;
 
@@ -26,9 +26,7 @@ export const SavedNewsPage = ({cards, logOut}) => {
           <span className={'saved-news__span'}>Природа, Тайга </span> и <span className={'saved-news__span'}>2-м другим</span>
         </p>
       </div>
-      <SavedNews
-        cards={cards}
-      />
+      <SavedNews/>
     </>
   );
 }

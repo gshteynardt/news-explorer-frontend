@@ -34,7 +34,10 @@ class Api {
     return fetch(`${this._baseUrl}/articles`, {
       headers: this.getHeaders('news'),
     })
-      .then((res) => this._handleOriginal(res));
+      .then((res) => {
+        console.log(res)
+        this._handleOriginal(res)
+      });
   }
 
   saveArticle(data) {
@@ -58,6 +61,7 @@ class Api {
 export const api = new Api({
   baseUrl: BASE_URL,
   headers: {
+    'Accept': 'application/json',
     'Content-Type': 'application/json',
   },
 });

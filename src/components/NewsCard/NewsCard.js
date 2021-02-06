@@ -5,6 +5,7 @@ import {Button} from "../Button/Button";
 import {useRouteMatch} from "react-router-dom";
 import {Checkbox} from "../Checkbox/Checkbox";
 import {ExternalLink} from "../Link/ExternalLink";
+import {useArticles} from "../../hooks/useArticles";
 
 export const NewsCard = ({card, isLogin}) => {
 
@@ -20,6 +21,8 @@ export const NewsCard = ({card, isLogin}) => {
   } = card;
 
   const {path} = useRouteMatch();
+
+  const { saveArticle, deleteArticle, } = useArticles();
 
   return (
     <li
@@ -38,6 +41,8 @@ export const NewsCard = ({card, isLogin}) => {
             : <Checkbox
               className={'card__button'}
               isLogin={isLogin}
+              keyword={keyword}
+              onClick={card._id ? deleteArticle : saveArticle}
             />
           }
 

@@ -22,7 +22,7 @@ export const Main = () => {
               title={'Результаты поиска'}
               button={true}
               initState={3}
-              cards={articles}
+              articles={articles}
             />
           </section>
         }

@@ -6,12 +6,10 @@ import {Button} from "../Button/Button";
 import {useUser} from "../../hooks/useUser";
 import {useArticles} from "../../hooks/useArticles";
 
-export const NewsCardList = ({initState = 3, button = true, className = '', title='Результаты поиска' }) => {
+export const NewsCardList = ({initState, button, className , title, articles }) => {
 
   const { user } = useUser();
   const isLogin = !!user;
-
-  const { articles } = useArticles();
 
   const [numberOfCards, setNumberOfCards] = useState(initState);
   const newsClassName = createClassName('news__items', className);

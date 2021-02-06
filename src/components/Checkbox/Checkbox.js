@@ -3,13 +3,15 @@ import './Checkbox.css';
 import createClassName from "../../utils/createClassName";
 import {Bookmark} from "../Icons/Bookmark";
 
-export const Checkbox = ({className, isLogin}) => {
+export const Checkbox = ({className, isLogin, onClick, keyword}) => {
   const labelClassName = createClassName('checkbox', className);
   const [isChecked, setIsChecked] = useState(false);
   const checkbox = useRef();
 
+  console.log(onClick)
   const handleClick = () => {
-    setIsChecked(checkbox.current.checked)
+    setIsChecked(checkbox.current.checked);
+    onClick(keyword);
   }
 
   const tooltip = () => {
