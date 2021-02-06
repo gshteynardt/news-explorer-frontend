@@ -11,6 +11,7 @@ export const Form = (
     textSubmitBtn,
     disabled,
     errorMessage,
+    ...rest
   }) => {
 
   const formClassName = createClassName('form', className);
@@ -19,7 +20,7 @@ export const Form = (
     <form
       className={ formClassName }
       onSubmit={ onSubmit }
-      noValidate
+      {...rest}
     >
       { children }
 

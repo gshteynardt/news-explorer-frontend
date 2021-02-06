@@ -7,7 +7,6 @@ export const useFormWithValidation = ({...keyObj}, callback) => {
 
   let isFormValid = Object.values(isValid).every(Boolean);
 
-  console.log(isFormValid, isValid)
   const handleChange = (event) => {
     const { name, value, validationMessage, validity } = event.target;
 

@@ -23,6 +23,13 @@ class NewsApi {
     this._convertedStartDay = this._getStartDate();
   }
 
+  _handleOriginal(res) {
+    if (!res.ok) {
+      return Promise.reject(`Error: ${res.status}`);
+    }
+    return res.json();
+  }
+
   /* Получить текущий день**/
   _getTodayDate(){
     const date = this._today
@@ -36,13 +43,8 @@ class NewsApi {
   }
 
   getArticles(keyword){
-    return fetch(`${this._baseUrl}${this._endpoint}?q=${keyword}&from=${this._convertedStartDay}&to=${this._convertedToday}&sort=${this._sortBy}&apiKey=${apiKey}`)
-      .then((res) => {
-        if (res.ok) {
-          return res.json();
-        }
-        return Promise.reject(res.status);
-      })
+    return fetch(`${this._baseUrl}${this._endpoint}?q=${keyword.keyword}&from=${this._convertedStartDay}&to=${this._convertedToday}&sort=${this._sortBy}&apiKey=${apiKey}`)
+      .then(res => this._handleOriginal(res));
   }
 }
 

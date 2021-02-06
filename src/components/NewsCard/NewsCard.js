@@ -16,8 +16,6 @@ export const NewsCard = ({card, isLogin}) => {
     source,
     link,
     image,
-    saved,
-    set,
     id,
   } = card;
 
@@ -50,20 +48,20 @@ export const NewsCard = ({card, isLogin}) => {
 
         <ExternalLink
           className={'card__link'}
-          href={'https://medium.com/'}
+          href={link}
           target={'_blank'}
         >
-       <img
-         className={'card__img'}
-         alt={title}
-         src={image}
-       />
-        <figcaption className={'card__caption'}>
-          <data className={'card__date'}>{date}</data>
-          <h3 className={'card__title'}>{title}</h3>
-          <p className={'card__text'}>{text}</p>
-          <p className={'card__source'}>{source}</p>
-        </figcaption>
+         <img
+           className={'card__img'}
+           alt={title}
+           src={image}
+         />
+          <figcaption className={'card__caption'}>
+            <data className={'card__date'}>{date}</data>
+            <h3 className={'card__title'}>{title}</h3>
+            <p className={'card__text'}>{text}</p>
+            <p className={'card__source'}>{source}</p>
+          </figcaption>
         </ExternalLink>
       </figure>
     </li>

@@ -2,8 +2,7 @@ import React from 'react';
 import './Preloader.css';
 import { NotFound } from "../Icons/NotFound";
 
-export const Preloader = ({ error }) => {
-
+export const Preloader = ({error}) => {
   return (
     <section className='circle-wrapper'>
       { error ? <NotFound/> : <i className="circle-preloader"></i>}

@@ -8,7 +8,7 @@ import {LoginForm} from "../components/Forms/LoginForm";
 import {Button} from "../components/Button/Button";
 import {RegisterForm} from "../components/Forms/RegisterForm";
 
-export const MainPage = ({ cards, logOut }) => {
+export const MainPage = ({ logOut }) => {
 
   const [popup, setPopup] = useState({
     isOpen: false,
@@ -115,9 +115,7 @@ const handleOpenPopupLogin = () => setPopup({
       }
       </Popup>
 
-      <Main
-        cards={cards}
-      />
+      <Main/>
 
     </>
   );

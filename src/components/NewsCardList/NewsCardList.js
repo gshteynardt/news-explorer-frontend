@@ -4,34 +4,29 @@ import createClassName from '../../utils/createClassName';
 import {NewsCard} from "../NewsCard/NewsCard";
 import {Button} from "../Button/Button";
 import {useUser} from "../../hooks/useUser";
+import {useArticles} from "../../hooks/useArticles";
 
-export const NewsCardList = (props) => {
-  const {
-    loggedIn,
-    className,
-    cards,
-    title,
-    button,
-    initState
-  } = props;
+export const NewsCardList = ({initState = 3, button = true, className = '', title='Результаты поиска' }) => {
 
   const { user } = useUser();
   const isLogin = !!user;
 
+  const { articles } = useArticles();
+
   const [numberOfCards, setNumberOfCards] = useState(initState);
   const newsClassName = createClassName('news__items', className);
-  const isLastCard = cards.length >= numberOfCards;
+  const isLastCard = articles.length >= numberOfCards;
 
   const showMoreCards = () => setNumberOfCards(prevValue => prevValue + 3);
 
-  const carsList = cards.slice(0, numberOfCards).map(card => {
-    return <NewsCard
-      key={card.id}
+  const carsList = articles.slice(0, numberOfCards)
+    .map(article => (<NewsCard
+      key={article.title + ' ' + article.link}
       className={'news__item'}
-      card={card}
+      card={article}
       isLogin={isLogin}
-    />
-   });
+    />)
+   );
 
   return (
     <>

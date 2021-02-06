@@ -3,8 +3,28 @@ import './SearchForm.css';
 import { Form } from "../Forms/Form";
 import { Input } from "../Input/Input";
 import { Button } from "../Button/Button";
+import {useArticles} from "../../hooks/useArticles";
+import { useFormWithValidation } from "../../hooks/useForm";
+
+const keyObj = {
+  keyword: '',
+};
 
 export const SearchForm = ({onSubmit}) => {
+
+  const handleSearch = ({...keyword}) => {
+    searchArticles(keyword);
+  }
+
+  const {
+    values,
+    handleChange,
+    errors,
+    handleSubmit,
+    isFormValid,
+  } = useFormWithValidation(keyObj, handleSearch);
+
+  const { searchArticles } = useArticles();
 
   return (
     <div className={'search'}>
@@ -16,12 +36,18 @@ export const SearchForm = ({onSubmit}) => {
       </p>
       <Form
         className={'form_theme_search'}
-        onSubmit={onSubmit}
+        onSubmit={handleSubmit}
       >
         <Input
+          type={'text'}
+          name={'keyword'}
+          isError={errors.keyword}
+          onChange={handleChange}
           required={true}
           className={'input_type_search'}
           placeholder={'Введите тему новости'}
+          errorMessage={'Неверный формат темы'}
+          value={values.keyword}
         />
         <Button
           text={'Искать'}

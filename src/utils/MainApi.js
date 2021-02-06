@@ -1,4 +1,4 @@
-import {token} from "./token";
+import { token } from "./Token";
 import { BASE_URL } from "./auth";
 
 class Api {
@@ -37,7 +37,7 @@ class Api {
       .then((res) => this._handleOriginal(res));
   }
 
-  createArticle(data) {
+  saveArticle(data) {
     return fetch(`${this._baseUrl}/articles`, {
       method: 'POST',
       headers: this.getHeaders('news'),
@@ -55,11 +55,10 @@ class Api {
   }
 }
 
-const api = new Api({
+export const api = new Api({
   baseUrl: BASE_URL,
   headers: {
     'Content-Type': 'application/json',
   },
 });
 
-export default api;
