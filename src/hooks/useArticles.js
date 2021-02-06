@@ -4,6 +4,7 @@ import { api } from '../utils/MainApi.js';
 import { transformArticle } from "../utils/transformArticle";
 import {filterArticles} from "../utils/filterArticles";
 import {useUser} from "./useUser";
+import {login} from "../utils/auth";
 const ArticlesContext = createContext();
 
 export const ArticlesProvider = ({children}) => {
@@ -52,6 +53,7 @@ export const ArticlesProvider = ({children}) => {
   const getArticles = async () => {
     try {
         const data = await api.getArticles();
+      console.log(data)
         setSavedArticles(data);
       } catch (err) {
         console.log(err);

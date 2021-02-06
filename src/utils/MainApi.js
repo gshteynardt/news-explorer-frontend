@@ -16,10 +16,9 @@ class Api {
 
   getHeaders(name) {
     const current_token = token.get(name);
-
     return {
       ...this._headers,
-      'Authorization': `Bearer ${current_token}`,
+      Authorization: `Bearer ${current_token}`,
     }
   }
 
@@ -34,10 +33,7 @@ class Api {
     return fetch(`${this._baseUrl}/articles`, {
       headers: this.getHeaders('news'),
     })
-      .then((res) => {
-        console.log(res)
-        this._handleOriginal(res)
-      });
+      .then((res) => this._handleOriginal(res));
   }
 
   saveArticle(data) {
@@ -61,7 +57,7 @@ class Api {
 export const api = new Api({
   baseUrl: BASE_URL,
   headers: {
-    'Accept': 'application/json',
+     Accept: 'application/json',
     'Content-Type': 'application/json',
   },
 });
