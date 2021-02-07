@@ -17,22 +17,26 @@ export const NewsCard = ({card, isLogin}) => {
     source,
     link,
     image,
-    id,
+    _id,
   } = card;
 
   const {path} = useRouteMatch();
+  const { deleteArticle } = useArticles();
 
-  const { saveArticle, deleteArticle, } = useArticles();
+  const onClickBySavedArticle = () => deleteArticle(card);
 
   return (
     <li
-      key={id}
+      key={_id}
       className={'news__item card'}
     >
       <figure className={'card__wrapper'}>
           {
             path !== '/'
-            ? <Button className={'card__button'}>
+            ? <Button
+                className={'card__button'}
+                onClick={onClickBySavedArticle}
+              >
                 <DeleteIcon/>
                 <p className={'card__popup card__popup_prompt'}>
                   Убрать из сохранённых
@@ -41,8 +45,7 @@ export const NewsCard = ({card, isLogin}) => {
             : <Checkbox
               className={'card__button'}
               isLogin={isLogin}
-              keyword={keyword}
-              onClick={card._id ? deleteArticle : saveArticle}
+              card={card}
             />
           }
 

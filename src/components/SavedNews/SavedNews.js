@@ -6,7 +6,7 @@ import {useArticles} from "../../hooks/useArticles";
 
 export const SavedNews = () => {
   const { savedArticles } = useArticles();
-  console.log(savedArticles)
+
   return (
     <section className={'saved-news wrapper__content'}>
       <NewsCardList

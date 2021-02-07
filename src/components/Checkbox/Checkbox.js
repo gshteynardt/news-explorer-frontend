@@ -1,17 +1,20 @@
-import React, {useState, useRef} from "react";
+import React, {useState, useRef, useCallback} from "react";
 import './Checkbox.css';
 import createClassName from "../../utils/createClassName";
 import {Bookmark} from "../Icons/Bookmark";
+import {useArticles} from "../../hooks/useArticles";
 
-export const Checkbox = ({className, isLogin, onClick, keyword}) => {
-  const labelClassName = createClassName('checkbox', className);
+export const Checkbox = ({className, isLogin, card }) => {
   const [isChecked, setIsChecked] = useState(false);
+  const labelClassName = createClassName('checkbox', className);
   const checkbox = useRef();
+  const { saveArticle, deleteArticle } = useArticles();
 
-  console.log(onClick)
+  const onClick = useCallback(() => card._id ? deleteArticle(card) : saveArticle(card), [card._id]);
+
   const handleClick = () => {
     setIsChecked(checkbox.current.checked);
-    onClick(keyword);
+    onClick();
   }
 
   const tooltip = () => {
@@ -27,7 +30,8 @@ export const Checkbox = ({className, isLogin, onClick, keyword}) => {
   return(
     <label className={labelClassName}>
       <input
-        onClick={handleClick}
+        checked={isChecked}
+        onChange={handleClick}
         ref={checkbox}
         className={'checkbox__input'}
         type={'checkbox'}

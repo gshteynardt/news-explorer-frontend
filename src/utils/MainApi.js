@@ -46,6 +46,7 @@ class Api {
   }
 
   deleteArticle(ArticleId) {
+    console.log(ArticleId)
     return fetch(`${this._baseUrl}/articles/${ArticleId}`, {
       method: 'DELETE',
       headers: this.getHeaders('news'),

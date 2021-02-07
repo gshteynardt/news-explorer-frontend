@@ -4,13 +4,12 @@ import { api } from '../utils/MainApi.js';
 import { transformArticle } from "../utils/transformArticle";
 import {filterArticles} from "../utils/filterArticles";
 import {useUser} from "./useUser";
-import {login} from "../utils/auth";
 const ArticlesContext = createContext();
 
 export const ArticlesProvider = ({children}) => {
   const [state, setState] = useState({
     loading: false,
-    articles: null,
+    articles: [],
     error: null,
     notFound: null,
   });
@@ -20,7 +19,6 @@ export const ArticlesProvider = ({children}) => {
   const { user } = useUser();
   const isLogin = !!user;
 
-  console.log(isLogin, savedArticles)
   /* получаем карточки из newsApi **/
   const searchArticles = async (keyword) => {
     setState(state => ({...state, loading: true}));
@@ -53,8 +51,7 @@ export const ArticlesProvider = ({children}) => {
   const getArticles = async () => {
     try {
         const data = await api.getArticles();
-      console.log(data)
-        setSavedArticles(data);
+        setSavedArticles(data.reverse());
       } catch (err) {
         console.log(err);
       }
@@ -65,21 +62,32 @@ export const ArticlesProvider = ({children}) => {
     try {
       const data = await api.saveArticle(article);
       article._id = data._id;
-      //нужно добавлять к существующему state не мутируя
-      setSavedArticles(data);
+      setSavedArticles((state) => ([
+        data,
+        ...state
+      ]));
       } catch (err) {
         console.log(err);
-      } finally {
-
       }
   }
 
   /* удаляем из BD**/
   const deleteArticle = async article => {
       try {
-          const data = await api.deleteArticle(article.id);
+          const data = await api.deleteArticle(article._id);
           const newArticles = savedArticles.filter(a => a._id !== data._id);
           setSavedArticles(newArticles);
+          setState(state => {
+            const newArticles = state.articles.map(item => {
+              if(item._id === data._id) delete item._id;
+              return item;
+            })
+
+            return ({
+              ...state,
+              article: newArticles,
+            })
+          })
         } catch (err) {
           console.log(err);
         }
