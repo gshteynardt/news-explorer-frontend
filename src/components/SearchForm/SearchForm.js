@@ -1,8 +1,7 @@
-import React from "react";
+import React, { useEffect } from "react";
 import './SearchForm.css';
 import { Form } from "../Forms/Form";
 import { Input } from "../Input/Input";
-import { Button } from "../Button/Button";
 import {useArticles} from "../../hooks/useArticles";
 import { useFormWithValidation } from "../../hooks/useForm";
 
@@ -10,8 +9,7 @@ const keyObj = {
   keyword: '',
 };
 
-export const SearchForm = ({onSubmit}) => {
-
+export const SearchForm = () => {
   const handleSearch = ({...keyword}) => {
     searchArticles(keyword);
   }
@@ -20,9 +18,14 @@ export const SearchForm = ({onSubmit}) => {
     values,
     handleChange,
     errors,
+    resetForm,
     handleSubmit,
     isFormValid,
   } = useFormWithValidation(keyObj, handleSearch);
+
+  useEffect(() => {
+    resetForm()
+  }, []);
 
   const { searchArticles } = useArticles();
 
@@ -37,21 +40,19 @@ export const SearchForm = ({onSubmit}) => {
       <Form
         className={'form_theme_search'}
         onSubmit={handleSubmit}
+        disabled={!isFormValid}
+        classNameBtn={'button_type_search'}
+        textSubmitBtn={'Искать'}
       >
         <Input
           type={'text'}
           name={'keyword'}
           isError={errors.keyword}
+          value={values.keyword}
           onChange={handleChange}
           required={true}
           className={'input_type_search'}
           placeholder={'Введите тему новости'}
-          errorMessage={'Неверный формат темы'}
-          value={values.keyword}
-        />
-        <Button
-          text={'Искать'}
-          className={'button_type_search'}
         />
       </Form>
     </div>

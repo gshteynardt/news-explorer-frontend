@@ -52,6 +52,12 @@
 	border-radius: 100px;
 }
 
+.input_type_search:focus {
+	outline: none;
+	box-shadow: inset 0 0 5px 2px #347EFF;
+	border-radius: 100px;
+}
+
 .label {
 	width: inherit;
 }

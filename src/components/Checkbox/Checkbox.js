@@ -5,16 +5,16 @@ import {Bookmark} from "../Icons/Bookmark";
 import {useArticles} from "../../hooks/useArticles";
 
 export const Checkbox = ({className, isLogin, card }) => {
-  const [isChecked, setIsChecked] = useState(false);
+
   const labelClassName = createClassName('checkbox', className);
+  const [isChecked, setIsChecked] = useState(false);
   const checkbox = useRef();
   const { saveArticle, deleteArticle } = useArticles();
-
-  const onClick = useCallback(() => card._id ? deleteArticle(card) : saveArticle(card), [card._id]);
+  const handleCard = () => !card._id ? saveArticle(card) : deleteArticle(card);
 
   const handleClick = () => {
+    handleCard();
     setIsChecked(checkbox.current.checked);
-    onClick();
   }
 
   const tooltip = () => {
@@ -35,7 +35,7 @@ export const Checkbox = ({className, isLogin, card }) => {
         ref={checkbox}
         className={'checkbox__input'}
         type={'checkbox'}
-        disabled={isLogin ? '' : 'disabled'}
+        disabled={!isLogin}
        />
       <span className={'checkbox__box'}>
         <Bookmark

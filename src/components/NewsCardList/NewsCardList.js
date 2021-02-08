@@ -6,7 +6,7 @@ import {Button} from "../Button/Button";
 import {useUser} from "../../hooks/useUser";
 import {useArticles} from "../../hooks/useArticles";
 
-export const NewsCardList = React.memo(({initState, button, className , title, articles }) => {
+export const NewsCardList = React.memo(({initState, button, className , title, articles = [] }) => {
   const { user } = useUser();
   const isLogin = !!user;
 

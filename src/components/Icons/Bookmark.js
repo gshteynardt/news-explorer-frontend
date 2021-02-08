@@ -1,7 +1,6 @@
 import React from "react"
 
 export const Bookmark = ({ isChecked }) => {
-
   return (
     <svg
       width={40}
@@ -15,7 +14,7 @@ export const Bookmark = ({ isChecked }) => {
         d="M19.382 23.714L14 27.943V12h12v15.942l-5.382-4.228-.618-.486-.618.486z"
         stroke={'currentColor'}
         strokeWidth={2}
-        fill ={isChecked? 'currentColor' : 'transparent'}
+        fill ={isChecked ? 'currentColor' : 'transparent'}
       />
     </svg>
   )

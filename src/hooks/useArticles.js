@@ -14,7 +14,7 @@ export const ArticlesProvider = ({children}) => {
     notFound: null,
   });
 
-  const [savedArticles, setSavedArticles] = useState(null);
+  const [savedArticles, setSavedArticles] = useState([]);
 
   const { user } = useUser();
   const isLogin = !!user;
@@ -26,6 +26,7 @@ export const ArticlesProvider = ({children}) => {
 
     try {
       const data = await newsApi.getArticles(keyword);
+
       fetchedArticles = data.articles.map(item => transformArticle(item, keyword));
 
       if(data.totalResults === 0) {
@@ -47,6 +48,7 @@ export const ArticlesProvider = ({children}) => {
     }
   }
 
+  console.log(savedArticles)
   /* получаем карточки из BD **/
   const getArticles = async () => {
     try {
@@ -62,7 +64,7 @@ export const ArticlesProvider = ({children}) => {
     try {
       const data = await api.saveArticle(article);
       article._id = data._id;
-      setSavedArticles((state) => ([
+      setSavedArticles(state => ([
         data,
         ...state
       ]));
@@ -95,7 +97,7 @@ export const ArticlesProvider = ({children}) => {
 
   useEffect(() => {
     if(isLogin) getArticles();
-  }, [isLogin])
+  }, [isLogin]);
 
   return(
     <ArticlesContext.Provider value={{...state, savedArticles, searchArticles, saveArticle, deleteArticle, getArticles}}>

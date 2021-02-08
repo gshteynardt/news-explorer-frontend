@@ -6,25 +6,24 @@ import { About } from '../About/About';
 import {useArticles} from "../../hooks/useArticles";
 
 export const Main = () => {
-  const { error, loading, articles } = useArticles();
+  const { error, loading, articles, notFound } = useArticles();
 
   return (
     <>
       <main className={'wrapper__content'}>
         {
-          loading
-          && <Preloader
-          error={error}
-        /> }
-        {
-          !articles ? null : <section className={'wrapper-news'}>
-            <NewsCardList
-              title={'Результаты поиска'}
-              button={true}
-              initState={3}
-              articles={articles}
-            />
-          </section>
+          loading || notFound
+            ? (<Preloader
+              error={notFound}
+            />)
+            : articles.length === 0 ? null : ( <section className={'wrapper-news'}>
+                <NewsCardList
+                  title={'Результаты поиска'}
+                  button={true}
+                  initState={3}
+                  articles={articles}
+                />
+              </section> )
         }
       </main>
       <About/>
