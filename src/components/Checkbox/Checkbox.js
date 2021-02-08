@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState } from "react";
 import './Checkbox.css';
 import createClassName from "../../utils/createClassName";
 import {Bookmark} from "../Icons/Bookmark";
@@ -8,7 +8,6 @@ export const Checkbox = ({className, isLogin, card }) => {
 
   const labelClassName = createClassName('checkbox', className);
   const [isChecked, setIsChecked] = useState(false);
-  const checkbox = useRef();
   const { saveArticle, deleteArticle } = useArticles();
   const handleCard = () => !card._id ? saveArticle(card) : deleteArticle(card);
 
@@ -32,7 +31,6 @@ export const Checkbox = ({className, isLogin, card }) => {
       <input
         checked={isChecked}
         onChange={handleClick}
-        ref={checkbox}
         className={'checkbox__input'}
         type={'checkbox'}
         disabled={!isLogin}

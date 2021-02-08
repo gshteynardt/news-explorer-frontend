@@ -4,7 +4,7 @@ import { api } from '../utils/MainApi.js';
 import { transformArticle } from "../utils/transformArticle";
 import {filterArticles} from "../utils/filterArticles";
 import {useUser} from "./useUser";
-import {createMap} from "../utils/createMap";
+import {useSaveArticles} from "./useSaveArticles";
 const ArticlesContext = createContext();
 
 export const ArticlesProvider = ({children}) => {
@@ -97,19 +97,10 @@ export const ArticlesProvider = ({children}) => {
   }
 
   useEffect(() => {
-    const articles = createMap(state.articles);
-    window.onbeforeunload = () => localStorage.setItem('articles', JSON.stringify(articles));
-  }, [state.articles]);
-
-  useEffect(() => {
     if(isLogin) getArticles();
-    let articles = JSON.parse(localStorage.getItem('articles'));
-    articles = Object.values(articles);
-    setState(state => ({
-      ...state,
-      articles,
-    }))
   }, [isLogin]);
+
+  useSaveArticles(state.articles, isLogin, setState);
 
   return(
     <ArticlesContext.Provider value={{...state, savedArticles, searchArticles, saveArticle, deleteArticle, getArticles}}>
