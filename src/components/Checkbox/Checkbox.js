@@ -1,4 +1,4 @@
-import React, {useState, useRef, useCallback} from "react";
+import React, { useState, useRef } from "react";
 import './Checkbox.css';
 import createClassName from "../../utils/createClassName";
 import {Bookmark} from "../Icons/Bookmark";
@@ -14,7 +14,7 @@ export const Checkbox = ({className, isLogin, card }) => {
 
   const handleClick = () => {
     handleCard();
-    setIsChecked(checkbox.current.checked);
+    setIsChecked(true);
   }
 
   const tooltip = () => {
