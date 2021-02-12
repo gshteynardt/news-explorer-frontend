@@ -36,6 +36,7 @@ export const useFormWithValidation = ({...keyObj}, callback) => {
   );
 
   const handleSubmit = async (evt) => {
+    setValues(keyObj);
     evt.preventDefault();
     callback({...values});
   }

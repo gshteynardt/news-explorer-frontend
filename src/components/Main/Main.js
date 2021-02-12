@@ -6,7 +6,7 @@ import { About } from '../About/About';
 import {useArticles} from "../../hooks/useArticles";
 
 export const Main = () => {
-  const { error, loading, articles, notFound } = useArticles();
+  const { loading, articles, notFound } = useArticles();
 
   return (
     <>

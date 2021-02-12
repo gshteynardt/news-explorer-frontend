@@ -10,7 +10,12 @@ const keyObj = {
 };
 
 export const SearchForm = () => {
+
   const handleSearch = ({...keyword}) => {
+    setState(state => ({
+      ...state,
+      notFound: false,
+    }))
     searchArticles(keyword);
   }
 
@@ -27,7 +32,7 @@ export const SearchForm = () => {
     resetForm()
   }, []);
 
-  const { searchArticles } = useArticles();
+  const { searchArticles, setState } = useArticles();
 
   return (
     <div className={'search'}>

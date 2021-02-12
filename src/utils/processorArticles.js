@@ -16,9 +16,6 @@ const declination = (number) => {
   return string;
 }
 
-/* получаем уникальные keywords **/
-const getKeywords = arr => [...new Set(arr.map(item => item.keyword).reverse())];
-
 /* фильтр статей **/
 const filterArticles = inputArr => {
   return inputArr.filter((item, index, arr) => {
@@ -28,12 +25,18 @@ const filterArticles = inputArr => {
   })
 }
 
+/* получаем уникальные keywords **/
+const getKeywords = arr => [...new Set(arr.map(item => item.keyword).reverse())];
+
+/* обработчики keywords для формирования фразы **/
 const capitalize = inputArr => inputArr.map(str => str.charAt(0).toUpperCase() + str.slice(1));
 
 const getKeywordPhrase = arr => (arr.length <= 2)
   ? capitalize(arr).join(', ')
   : `${capitalize(arr.slice(0, 2)).join(', ')} и ${arr.slice(2).length}-м другим`;
 
+
+/* трансформируем статью **/
 const transformArticle = (article, keyword) => ({
   keyword: keyword.keyword,
   title: article.title,
