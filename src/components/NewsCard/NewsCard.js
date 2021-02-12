@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import './NewsCard.css';
 import {DeleteIcon} from "../Icons/DeleteIcon";
 import {Button} from "../Button/Button";
@@ -7,8 +7,7 @@ import {Checkbox} from "../Checkbox/Checkbox";
 import {ExternalLink} from "../Link/ExternalLink";
 import {useArticles} from "../../hooks/useArticles";
 
-export const NewsCard = ({card, isLogin}) => {
-
+const NewsCard = ({card, isLogin}) => {
   const {
     keyword,
     title,
@@ -74,4 +73,6 @@ export const NewsCard = ({card, isLogin}) => {
       </figure>
     </li>
   );
-}
+};
+
+export default memo(NewsCard);

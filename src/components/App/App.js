@@ -4,10 +4,10 @@ import {Route, Switch, Redirect, useHistory} from "react-router-dom";
 import { MainPage } from "../../pages/MainPage";
 import { SavedNewsPage } from "../../pages/SavedNewsPage";
 import { Footer } from "../Footer/Footer";
-import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 import ProtectedRoute from "../../hooks/ProtectedRoute";
 import {useUser} from "../../hooks/useUser";
 import {Preloader} from "../Preloader/Preloader";
+import {useArticles} from "../../hooks/useArticles";
 
 
 const App = () => {
@@ -15,10 +15,15 @@ const App = () => {
 
   const isLogin = !!user;
   const history = useHistory();
+  const { setState } = useArticles();
 
   const logOut = () => {
     localStorage.clear();
-    history.push('./')
+    setState(state => ({
+      ...state,
+      articles: [],
+    }));
+    history.push('./');
   };
 
   if (loading) {
@@ -26,7 +31,6 @@ const App = () => {
   }
   return (
     <div className="page">
-      <CurrentUserContext.Provider value={''}>
         <Switch>
 
           <Route exact path={'/'}>
@@ -50,7 +54,6 @@ const App = () => {
 
           </Switch>
           <Footer/>
-      </CurrentUserContext.Provider>
     </div>
   );
 }

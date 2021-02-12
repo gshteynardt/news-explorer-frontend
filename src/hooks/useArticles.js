@@ -1,10 +1,10 @@
-import { createContext, useContext, useState, useEffect } from 'react';
-import { newsApi } from '../utils/NewsApi.js';
-import { api } from '../utils/MainApi.js';
-import { transformArticle } from "../utils/transformArticle";
-import {filterArticles} from "../utils/filterArticles";
+import {createContext, useContext, useEffect, useState} from 'react';
+import {newsApi} from '../utils/NewsApi.js';
+import {api} from '../utils/MainApi.js';
+import {filterArticles, transformArticle} from "../utils/processorArticles";
 import {useUser} from "./useUser";
 import {useSaveArticles} from "./useSaveArticles";
+
 const ArticlesContext = createContext();
 
 export const ArticlesProvider = ({children}) => {
@@ -16,7 +16,6 @@ export const ArticlesProvider = ({children}) => {
   });
 
   const [savedArticles, setSavedArticles] = useState([]);
-
   const { user } = useUser();
   const isLogin = !!user;
 
@@ -49,7 +48,6 @@ export const ArticlesProvider = ({children}) => {
     }
   }
 
-  console.log(savedArticles)
   /* получаем карточки из BD **/
   const getArticles = async () => {
     try {
@@ -103,14 +101,12 @@ export const ArticlesProvider = ({children}) => {
   useSaveArticles(state.articles, isLogin, setState);
 
   return(
-    <ArticlesContext.Provider value={{...state, savedArticles, searchArticles, saveArticle, deleteArticle, getArticles}}>
+    <ArticlesContext.Provider value={{...state, setState, savedArticles, searchArticles, saveArticle, deleteArticle, getArticles}}>
       {children}
     </ArticlesContext.Provider>
   )
 }
 
 export const useArticles = () => {
-  const articles = useContext(ArticlesContext);
-
-  return articles;
+  return useContext(ArticlesContext);
 }

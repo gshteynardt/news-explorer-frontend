@@ -35,20 +35,7 @@
 
 .button_type_search:disabled {
 	background: #2F71E5;
-	box-shadow: 0 0 0 0 transparent;
 	cursor: default;
-}
-
-.button_type_search:disabled {
-	background: #347EFF;
-	box-shadow: 0 0 0 0 transparent;
-	cursor: default;
-}
-
-.button_type_search:focus {
-	outline: 0;
-	background: #2A65CC;
-	box-shadow: 0 5px 5px rgba(14, 26, 57, 0.5);
 }
 
 /*Menu header*/

@@ -2,11 +2,8 @@ import React from "react";
 import './SavedNews.css';
 
 import { NewsCardList } from "../NewsCardList/NewsCardList";
-import {useArticles} from "../../hooks/useArticles";
 
-export const SavedNews = () => {
-  const { savedArticles } = useArticles();
-
+export const SavedNews = ({savedArticles}) => {
   return (
     <section className={'saved-news wrapper__content'}>
       <NewsCardList

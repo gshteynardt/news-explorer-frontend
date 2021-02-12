@@ -1,12 +1,11 @@
 import React, {useState} from "react";
 import './NewsCardList.css';
 import createClassName from '../../utils/createClassName';
-import {NewsCard} from "../NewsCard/NewsCard";
+import NewsCard from "../NewsCard/NewsCard";
 import {Button} from "../Button/Button";
 import {useUser} from "../../hooks/useUser";
-import {useArticles} from "../../hooks/useArticles";
 
-export const NewsCardList = React.memo(({initState, button, className , title, articles = [] }) => {
+export const NewsCardList = ({initState, button, className , title, articles = [] }) => {
   const { user } = useUser();
   const isLogin = !!user;
 
@@ -41,4 +40,4 @@ export const NewsCardList = React.memo(({initState, button, className , title, a
       /> }
     </>
   );
-})
+}

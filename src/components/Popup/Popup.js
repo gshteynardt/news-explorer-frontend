@@ -1,24 +1,37 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useCallback } from 'react';
 import './Popup.css';
 import { Button } from "../Button/Button";
 import { CrossIcon } from "../Icons/CrossIcon";
 
 export const Popup = ({ isOpen, onClose, children }) => {
 
-  const handleEsc = (e) => {
-    if (e.key !== 'Escape') return;
-    onClose();
-  };
+  const handleClick = useCallback((e) => {
+    if (e.currentTarget === e.target) onClose();
+
+    if (!isOpen) e.stopPropagation();
+  }, [onClose, isOpen]);
 
   useEffect(() => {
-    document.addEventListener('keydown', handleEsc);
-    return () => document.removeEventListener('keydown', handleEsc);
+    if (!isOpen) return;
+
+    const handleEsc = (e) => {
+      if (e.key === 'Escape') onClose();
+    };
+
+    document.addEventListener('keyup', handleEsc);
+
+    return () => {
+      document.removeEventListener('keyup', handleEsc);
+    };
   }, [isOpen]);
 
   const className = `popup ${isOpen && 'popup_opened'}`;
 
   return (
-    <section className={className}>
+    <section
+      className={className}
+      onClickCapture={handleClick}
+    >
       <div className={'popup__container'}>
         <Button
           type="button"

@@ -1,20 +1,15 @@
-import React, { useState } from "react";
+import React from "react";
 import './Checkbox.css';
 import createClassName from "../../utils/createClassName";
 import {Bookmark} from "../Icons/Bookmark";
 import {useArticles} from "../../hooks/useArticles";
 
+
 export const Checkbox = ({className, isLogin, card }) => {
-
   const labelClassName = createClassName('checkbox', className);
-  const [isChecked, setIsChecked] = useState(false);
   const { saveArticle, deleteArticle } = useArticles();
-  const handleCard = () => !card._id ? saveArticle(card) : deleteArticle(card);
-
-  const handleClick = () => {
-    handleCard();
-    setIsChecked(true);
-  }
+  const isChecked = !!card._id;
+  const handleSave = () => !card._id ? saveArticle(card) : deleteArticle(card);
 
   const tooltip = () => {
     if (!isLogin) {
@@ -30,7 +25,7 @@ export const Checkbox = ({className, isLogin, card }) => {
     <label className={labelClassName}>
       <input
         checked={isChecked}
-        onChange={handleClick}
+        onChange={handleSave}
         className={'checkbox__input'}
         type={'checkbox'}
         disabled={!isLogin}
@@ -38,6 +33,7 @@ export const Checkbox = ({className, isLogin, card }) => {
       <span className={'checkbox__box'}>
         <Bookmark
           isChecked={isChecked}
+          isLogin={isLogin}
         />
       </span>
         <div className={'checkbox__tooltip'}>
@@ -46,3 +42,5 @@ export const Checkbox = ({className, isLogin, card }) => {
     </label>
   )
 }
+
+
