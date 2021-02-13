@@ -1,17 +1,18 @@
 /* склоняем слова **/
 const declination = (number) => {
   number = String(number);
-  const lastDigit = +number[number.length - 1];
-  let string = "сохраненных статей";
 
-  if ((lastDigit === 1) && (lastDigit !== 11)) {
-    string = "сохраненная статья";
+  const lastDigit = number.length <= 2 ? +number[number.length - 1] : +number.slice(-2);
+  let string = "сохраненных статей"
+
+  if ((lastDigit === 1) && (lastDigit !== 11) && (+number !== 11)) {
+    string = "сохраненная статья"
   }
 
-  if (((lastDigit === 2) && (lastDigit !== 12)) ||
-    ((lastDigit === 3) && (lastDigit !== 13)) ||
-    ((lastDigit === 4) && (lastDigit !== 14))) {
-    string = "сохраненные статьи";
+  if (((lastDigit === 2) && (lastDigit !== 12) && (+number !== 12)) ||
+    ((lastDigit === 3) && (lastDigit !== 13) && (+number !== 13)) ||
+    ((lastDigit === 4) && (lastDigit !== 14) && (+number !== 14))) {
+    string = "сохраненные статьи"
   }
   return string;
 }
@@ -33,7 +34,7 @@ const capitalize = inputArr => inputArr.map(str => str.charAt(0).toUpperCase() +
 
 const getKeywordPhrase = arr => (arr.length <= 2)
   ? capitalize(arr).join(', ')
-  : `${capitalize(arr.slice(0, 2)).join(', ')} и ${arr.slice(2).length}-м другим`;
+  : { words: capitalize(arr.slice(0, 2)).join(', '), num: arr.slice(2).length }
 
 
 /* трансформируем статью **/

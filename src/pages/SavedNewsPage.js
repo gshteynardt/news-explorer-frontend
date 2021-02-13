@@ -15,7 +15,8 @@ export const SavedNewsPage = ({logOut}) => {
   const uniqKeywordsArr = getKeywords(savedArticles);
   const lengthArticles = savedArticles.length;
   const wordSaved = declination(lengthArticles);
-
+  const keywordsObj = getKeywordPhrase(uniqKeywordsArr);
+  console.log(keywordsObj.words)
   return (
     <>
       <Header>
@@ -31,7 +32,22 @@ export const SavedNewsPage = ({logOut}) => {
         <p className={'saved-news__statistics'}>{ name }, у вас { savedArticles.length } { wordSaved }</p>
         <p className={'saved-news__keywords'}>
           По ключевым словам:&nbsp;
-          <span className={'saved-news__span'}>{getKeywordPhrase(uniqKeywordsArr)}</span>
+          <span className="saved-news__span">{ keywordsObj.words || keywordsObj }</span>
+          {
+            keywordsObj.num &&
+            ( <>
+              <span>&nbsp;и&nbsp;</span>
+              <span className="saved-news__span">
+                {
+                  keywordsObj.num === 1
+                    ? `${keywordsObj.num}-ой другой`
+                    : `${keywordsObj.num}-м другим`
+                }
+              </span>
+              </>
+            )
+          }
+
         </p>
       </div>
       <SavedNews savedArticles={savedArticles}/>
