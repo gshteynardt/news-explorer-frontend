@@ -6,8 +6,8 @@ import { SavedNewsPage } from "../../pages/SavedNewsPage";
 import { Footer } from "../Footer/Footer";
 import ProtectedRoute from "../../hooks/ProtectedRoute";
 import {useUser} from "../../hooks/useUser";
-import {Preloader} from "../Preloader/Preloader";
 import {useArticles} from "../../hooks/useArticles";
+import MainPreloader from "../MainPreloader/MainPreloader";
 
 
 const App = () => {
@@ -28,7 +28,7 @@ const App = () => {
   };
 
   if (loading) {
-    return (<Preloader/>);
+    return (<MainPreloader/>);
   }
   return (
     <div className="page">
