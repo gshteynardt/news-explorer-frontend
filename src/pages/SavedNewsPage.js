@@ -28,28 +28,30 @@ export const SavedNewsPage = ({logOut}) => {
           logOut={logOut}
         />
       </Header>
-      <div className={'saved-news__info wrapper__content'}>
-        <h2 className={'saved-news__title'}>Сохранённые статьи</h2>
-        <p className={'saved-news__statistics'}>{ name }, у вас { savedArticles.length } { wordSaved }</p>
-        <p className={'saved-news__keywords'}>
-          По ключевым словам:&nbsp;
-          <span className="saved-news__span">{ keywordsObj.words || keywordsObj }</span>
-          {
-            keywordsObj.num &&
-            ( <>
-              <span>&nbsp;и&nbsp;</span>
-              <span className="saved-news__span">
-                {
-                  `${keywordsObj.num}-м другим`
-                }
-              </span>
-              </>
-            )
-          }
+      <main className={'saved__wrapper'}>
+        <div className={'saved-news__info wrapper__content'}>
+          <h2 className={'saved-news__title'}>Сохранённые статьи</h2>
+          <p className={'saved-news__statistics'}>{ name }, у вас { savedArticles.length } { wordSaved }</p>
+          <p className={'saved-news__keywords'}>
+            По ключевым словам:&nbsp;
+            <span className="saved-news__span">{ keywordsObj.words || keywordsObj }</span>
+            {
+              keywordsObj.num &&
+              ( <>
+                <span>&nbsp;и&nbsp;</span>
+                <span className="saved-news__span">
+                  {
+                    `${keywordsObj.num}-м другим`
+                  }
+                </span>
+                </>
+              )
+            }
 
-        </p>
-      </div>
-      <SavedNews savedArticles={savedArticles}/>
+          </p>
+        </div>
+        <SavedNews savedArticles={savedArticles}/>
+      </main>
     </>
   );
 }

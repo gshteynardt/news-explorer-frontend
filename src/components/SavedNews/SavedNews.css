@@ -2,6 +2,10 @@
 	font-family: Roboto, sans-serif;
 }
 
+.saved__wrapper {
+  flex-grow: 1;
+}
+
 .saved-news__info {
 	padding-top: 40px;
 	padding-bottom: 56px;
