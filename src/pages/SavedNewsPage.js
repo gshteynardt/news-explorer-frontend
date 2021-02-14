@@ -4,19 +4,20 @@ import { SavedNews } from "../components/SavedNews/SavedNews";
 import { Navbar } from "../components/Navbar/Navbar";
 import { useUser } from "../hooks/useUser";
 import { useArticles } from "../hooks/useArticles";
-import { getKeywords, getKeywordPhrase, declination } from "../utils/processorArticles";
+import { countKeywords, getKeywordPhrase, declination, keywordsMap, getKeywords } from "../utils/processorArticles";
 
 export const SavedNewsPage = ({logOut}) => {
   const { user } = useUser();
   const name = user?.name;
 
   const { savedArticles } = useArticles();
-
-  const uniqKeywordsArr = getKeywords(savedArticles);
+  const keywords = getKeywords(savedArticles);
+  const uniqKeywordsArr = countKeywords(keywords);
+  const mapKeywords = keywordsMap(uniqKeywordsArr);
   const lengthArticles = savedArticles.length;
   const wordSaved = declination(lengthArticles);
-  const keywordsObj = getKeywordPhrase(uniqKeywordsArr);
-  console.log(keywordsObj.words)
+  const keywordsObj = getKeywordPhrase(mapKeywords);
+
   return (
     <>
       <Header>
@@ -39,9 +40,7 @@ export const SavedNewsPage = ({logOut}) => {
               <span>&nbsp;и&nbsp;</span>
               <span className="saved-news__span">
                 {
-                  keywordsObj.num === 1
-                    ? `${keywordsObj.num}-ой другой`
-                    : `${keywordsObj.num}-м другим`
+                  `${keywordsObj.num}-м другим`
                 }
               </span>
               </>

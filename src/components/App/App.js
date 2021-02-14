@@ -11,7 +11,7 @@ import {useArticles} from "../../hooks/useArticles";
 
 
 const App = () => {
-  const { loading, user } = useUser();
+  const { loading, user, getUser } = useUser();
 
   const isLogin = !!user;
   const history = useHistory();
@@ -23,6 +23,7 @@ const App = () => {
       ...state,
       articles: [],
     }));
+    getUser();
     history.push('./');
   };
 

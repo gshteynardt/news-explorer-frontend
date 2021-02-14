@@ -17,6 +17,14 @@ const declination = (number) => {
   return string;
 }
 
+//форматирование даты
+const formaterDate = (locale, dateICO) => {
+  const options = { year: 'numeric', month: 'long', day: 'numeric' };
+  const date = new Date(dateICO);
+  const dateArray = date.toLocaleString(locale, options).split(' ');
+  return `${dateArray[0]} ${dateArray[1]}, ${dateArray[2]}`;
+};
+
 /* фильтр статей **/
 const filterArticles = inputArr => {
   return inputArr.filter((item, index, arr) => {
@@ -26,16 +34,24 @@ const filterArticles = inputArr => {
   })
 }
 
-/* получаем уникальные keywords **/
-const getKeywords = arr => [...new Set(arr.map(item => item.keyword).reverse())];
+/* получаем уникальные keywords из массива статей**/
+const getKeywords = arr => arr.map(item => item.keyword).reverse();
+
+/* считем количество повторяющихся keywords**/
+const countKeywords = arr => arr.reduce( (total, keyword) => {
+  total[keyword] = (total[keyword] || 0) + 1 ;
+  return total;
+} , {})
+
+//формируем двухмерный массив из пар key value
+const keywordsMap = arr =>  Object.entries(arr).sort((a, b) =>  b[1] - a[1]).map(item => item[0]);
 
 /* обработчики keywords для формирования фразы **/
 const capitalize = inputArr => inputArr.map(str => str.charAt(0).toUpperCase() + str.slice(1));
 
-const getKeywordPhrase = arr => (arr.length <= 2)
+const getKeywordPhrase = arr => (arr.length <= 3)
   ? capitalize(arr).join(', ')
-  : { words: capitalize(arr.slice(0, 2)).join(', '), num: arr.slice(2).length }
-
+  : { words: capitalize(arr.slice(0, 2)).join(', '), num: arr.slice(2).length };
 
 /* трансформируем статью **/
 const transformArticle = (article, keyword) => ({
@@ -50,8 +66,11 @@ const transformArticle = (article, keyword) => ({
 
 export {
   declination,
-  getKeywords,
+  countKeywords,
   getKeywordPhrase,
   filterArticles,
   transformArticle,
+  keywordsMap,
+  getKeywords,
+  formaterDate,
 }

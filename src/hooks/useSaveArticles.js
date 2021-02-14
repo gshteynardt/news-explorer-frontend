@@ -9,7 +9,7 @@ export const useSaveArticles = (articles, isLogin, callback) => {
 
   useEffect(() => {
     let articles = JSON.parse(localStorage.getItem('articles'));
-    articles = Object.values(articles);
+    articles = Object.values(articles || []);
     callback(state => ({
       ...state,
       articles,

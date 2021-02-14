@@ -1,13 +1,14 @@
 import React, { memo } from 'react';
 import './NewsCard.css';
-import {DeleteIcon} from "../Icons/DeleteIcon";
-import {Button} from "../Button/Button";
-import {useRouteMatch} from "react-router-dom";
-import {Checkbox} from "../Checkbox/Checkbox";
-import {ExternalLink} from "../Link/ExternalLink";
-import {useArticles} from "../../hooks/useArticles";
+import { DeleteIcon } from "../Icons/DeleteIcon";
+import { Button } from "../Button/Button";
+import { useRouteMatch } from "react-router-dom";
+import { Checkbox } from "../Checkbox/Checkbox";
+import { ExternalLink } from "../Link/ExternalLink";
+import { useArticles } from "../../hooks/useArticles";
+import { formaterDate } from "../../utils/processorArticles.js";
 
-const NewsCard = ({card, isLogin}) => {
+const NewsCard = ({ card, isLogin }) => {
   const {
     keyword,
     title,
@@ -19,7 +20,7 @@ const NewsCard = ({card, isLogin}) => {
     _id,
   } = card;
 
-  const {path} = useRouteMatch();
+  const { path } = useRouteMatch();
   const { deleteArticle } = useArticles();
 
   const onClickBySavedArticle = () => deleteArticle(card);
@@ -64,7 +65,7 @@ const NewsCard = ({card, isLogin}) => {
            src={image}
          />
           <figcaption className={'card__caption'}>
-            <data className={'card__date'}>{date}</data>
+            <data className={'card__date'}>{formaterDate('ru', date)}</data>
             <h3 className={'card__title'}>{title}</h3>
             <p className={'card__text'}>{text}</p>
             <p className={'card__source'}>{source}</p>
