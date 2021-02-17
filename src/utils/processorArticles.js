@@ -61,7 +61,7 @@ const transformArticle = (article, keyword) => ({
   date: article.publishedAt,
   source: article.source.name,
   link: article.url,
-  image: article.urlToImage || `https://klondike-studio.ru/images/wiki/development/error-404-page.jpg`,
+  image: article.urlToImage || `https://i.postimg.cc/fRLcspdk/image-not-found.jpg`,
 })
 
 export {

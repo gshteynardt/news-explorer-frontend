@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css';
 import {Route, Switch, Redirect, useHistory} from "react-router-dom";
 import { MainPage } from "../../pages/MainPage";
@@ -8,7 +8,6 @@ import ProtectedRoute from "../../hooks/ProtectedRoute";
 import {useUser} from "../../hooks/useUser";
 import {useArticles} from "../../hooks/useArticles";
 import MainPreloader from "../MainPreloader/MainPreloader";
-
 
 const App = () => {
   const { loading, user, getUser } = useUser();
@@ -65,43 +64,48 @@ const App = () => {
     history.push('./');
   };
 
+  useEffect(() => {
+    if (isLogin) onClosePopup()
+  }, [isLogin])
+
   if (loading) {
     return (<MainPreloader/>);
   }
-
   return (
     <div className="page">
-        <Switch>
+      <Switch>
 
-          <Route exact path={'/'}>
-            <MainPage
-              logOut={logOut}
-              popup={popup}
-              openPopupLogin={handleOpenPopupLogin}
-              openPopupRegister={handleOpenPopupRegister}
-              openSuccessPopup={openSuccessPopup}
-              onClosePopup={onClosePopup}
+        <Route exact path={'/'}>
+          <MainPage
+            logOut={logOut}
+            popup={popup}
+            openPopupLogin={handleOpenPopupLogin}
+            openPopupRegister={handleOpenPopupRegister}
+            openSuccessPopup={openSuccessPopup}
+            onClosePopup={onClosePopup}
 
-            />
-          </Route>
+          />
+        </Route>
 
-          <ProtectedRoute
-            path={'/saved-news'}
-            isLogin={isLogin}
-          >
-            <SavedNewsPage
-              logOut={logOut}
-            />
-          </ProtectedRoute>
+        <ProtectedRoute
+          path={'/saved-news'}
+          openPopupLogin={handleOpenPopupLogin}
+          isLogin={isLogin}
+        >
+          <SavedNewsPage
+            logOut={logOut}
+          />
+        </ProtectedRoute>
 
-          <Route path="*">
-            <Redirect to="/" />
-          </Route>
+        <Route path="/*">
+          <Redirect to="/" />
+        </Route>
 
-          </Switch>
-          <Footer/>
+      </Switch>
+      <Footer/>
     </div>
   );
+
 }
 
 export default App;

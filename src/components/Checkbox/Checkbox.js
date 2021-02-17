@@ -10,7 +10,7 @@ export const Checkbox = ({className, isLogin, card, openLogin }) => {
   const { saveArticle, deleteArticle } = useArticles();
   const isChecked = !!card._id;
   const handleSave = () => !card._id ? saveArticle(card) : deleteArticle(card);
-  const onClick = () => !isLogin ? openLogin : '';
+  const onClick = () => !isLogin ? openLogin() : '';
 
   const tooltip = () => {
     if (!isLogin) {
