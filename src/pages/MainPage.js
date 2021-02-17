@@ -8,46 +8,16 @@ import {LoginForm} from "../components/Forms/LoginForm";
 import {Button} from "../components/Button/Button";
 import {RegisterForm} from "../components/Forms/RegisterForm";
 
-export const MainPage = ({ logOut }) => {
+export const MainPage = (props) => {
 
-  const [popup, setPopup] = useState({
-    isOpen: false,
-    register: false,
-    login: false,
-    success: false,
-  })
-
-  /* Открыть popup login **/
-const handleOpenPopupLogin = () => setPopup({
-      isOpen: true,
-      register: false,
-      success: false,
-      login: true,
-    });
-
-  /* Открыть popup регистрации **/
-  const handleOpenPopupRegister = () => setPopup({
-    isOpen: true,
-    register: true,
-    login: false,
-    success: false,
-    });
-
-  /* Открыть окно подтверждения регистрации **/
-  const openSuccessPopup = () => setPopup(
-    prevState => ({
-      ...prevState,
-      isOpen: true,
-      success: true,
-    })
-  )
-
-  const onClosePopup = () => setPopup({
-    isOpen: false,
-    register: false,
-    login: false,
-    success: false,
-  })
+  const {
+    logOut,
+    popup,
+    onClosePopup,
+    openPopupLogin,
+    openPopupRegister,
+    openSuccessPopup,
+  } = props;
 
   return(
     <>
@@ -56,7 +26,7 @@ const handleOpenPopupLogin = () => setPopup({
           <Navbar
             theme={'white'}
             bgMenu={'black'}
-            onLoginClick={handleOpenPopupLogin}
+            onLoginClick={openPopupLogin}
             logOut={logOut}
           />
         </Header>
@@ -76,7 +46,7 @@ const handleOpenPopupLogin = () => setPopup({
             <h3 className="popup__title">Вход</h3>
             <LoginForm
               isOpen={popup.isOpen}
-              openRegister={handleOpenPopupRegister}
+              openRegister={openPopupRegister}
               onClose={onClosePopup}
             />
           </>
@@ -90,7 +60,7 @@ const handleOpenPopupLogin = () => setPopup({
               <h3 className="popup__title">Регистрация</h3>
               <RegisterForm
                 isOpen={popup.isOpen}
-                openLogin={handleOpenPopupLogin}
+                openLogin={openPopupLogin}
                 onClose={onClosePopup}
                 isSuccess={openSuccessPopup}
               />
@@ -105,7 +75,7 @@ const handleOpenPopupLogin = () => setPopup({
             Пользователь успешно зарегистрирован!
           </h3>
           <Button
-            onClick={handleOpenPopupLogin}
+            onClick={openPopupLogin}
             className={'button_type_link'}
           >
             Войти
@@ -115,7 +85,7 @@ const handleOpenPopupLogin = () => setPopup({
       }
       </Popup>
 
-      <Main openLogin={handleOpenPopupLogin}/>
+      <Main openLogin={openPopupLogin}/>
 
     </>
   );
