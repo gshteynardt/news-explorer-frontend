@@ -7,6 +7,7 @@ import {useFormWithValidation} from "../../hooks/useForm";
 import * as auth from "../../utils/auth";
 import { token } from "../../utils/Token";
 import { useUser } from "../../hooks/useUser";
+import { useArticles } from "../../hooks/useArticles";
 
 const keyObj = {
   email: '',
@@ -18,6 +19,7 @@ const errorMessage = 'Неверно указанны данные';
 export const LoginForm = ({openRegister, onClose, isOpen}) => {
   const [error, setError] = useState(null);
   const { getUser } = useUser();
+  const { articles } = useArticles();
 
   const handleOnClick = () => openRegister();
 
@@ -27,6 +29,7 @@ export const LoginForm = ({openRegister, onClose, isOpen}) => {
       if (data.token) {
         token.set('news', data.token);
         await getUser(data.token);
+        localStorage.setItem('articles', JSON.stringify(articles));
         onClose();
         return data;
       } if (data.message) {

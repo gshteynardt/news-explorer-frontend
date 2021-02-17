@@ -5,7 +5,7 @@ import {Bookmark} from "../Icons/Bookmark";
 import {useArticles} from "../../hooks/useArticles";
 
 
-export const Checkbox = ({className, isLogin, card }) => {
+export const Checkbox = ({className, isLogin, card, openLogin }) => {
   const labelClassName = createClassName('checkbox', className);
   const { saveArticle, deleteArticle } = useArticles();
   const isChecked = !!card._id;
@@ -22,10 +22,10 @@ export const Checkbox = ({className, isLogin, card }) => {
   }
 
   return(
-    <label className={labelClassName}>
+    <label className={labelClassName} onClick={!isLogin && openLogin}>
       <input
         checked={isChecked}
-        onChange={handleSave}
+        onChange={ handleSave }
         className={'checkbox__input'}
         type={'checkbox'}
         disabled={!isLogin}

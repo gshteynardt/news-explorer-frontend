@@ -8,7 +8,7 @@ import { ExternalLink } from "../Link/ExternalLink";
 import { useArticles } from "../../hooks/useArticles";
 import { formaterDate } from "../../utils/processorArticles.js";
 
-const NewsCard = ({ card, isLogin }) => {
+const NewsCard = ({ card, isLogin, openLogin }) => {
   const {
     keyword,
     title,
@@ -45,6 +45,7 @@ const NewsCard = ({ card, isLogin }) => {
             : <Checkbox
               className={'card__button'}
               isLogin={isLogin}
+              openLogin={openLogin}
               card={card}
             />
           }

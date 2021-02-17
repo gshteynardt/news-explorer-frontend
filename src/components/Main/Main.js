@@ -5,7 +5,7 @@ import { Preloader } from "../Preloader/Preloader";
 import { About } from '../About/About';
 import {useArticles} from "../../hooks/useArticles";
 
-export const Main = () => {
+export const Main = ({ openLogin }) => {
   const { loading, articles, notFound } = useArticles();
 
   return (
@@ -18,6 +18,7 @@ export const Main = () => {
             />)
             : articles.length === 0 ? null : ( <section className={'wrapper-news'}>
                 <NewsCardList
+                  openLogin={openLogin}
                   title={'Результаты поиска'}
                   button={true}
                   initState={3}

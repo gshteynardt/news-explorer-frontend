@@ -5,7 +5,7 @@ import NewsCard from "../NewsCard/NewsCard";
 import {Button} from "../Button/Button";
 import {useUser} from "../../hooks/useUser";
 
-export const NewsCardList = ({initState, button, className , title, articles = [] }) => {
+export const NewsCardList = ({initState, button, className , title, articles = [], openLogin }) => {
   const { user } = useUser();
   const isLogin = !!user;
 
@@ -21,6 +21,7 @@ export const NewsCardList = ({initState, button, className , title, articles = [
       className={'news__item'}
       card={article}
       isLogin={isLogin}
+      openLogin={openLogin}
     />)
    );
 

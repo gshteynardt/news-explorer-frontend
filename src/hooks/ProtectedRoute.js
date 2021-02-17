@@ -1,6 +1,14 @@
 import React from 'react';
-import { Route, Redirect } from 'react-router-dom';
+import { Route, Redirect, useLocation } from 'react-router-dom';
+import {useUser} from "./useUser";
 
-const ProtectedRoute = ({ isLogin, path, children }) => (isLogin ? <Route path={path}>{children}</Route> : <Redirect to="/" />);
+const ProtectedRoute = ({ isLogin, path, children, ...props}) => {
+  const { pathname } = useLocation();
+  const { loading } = useUser();
+
+  return isLogin || !loading
+    ? <Route path={path} { ...props }>{children}</Route>
+    : <Redirect to="/"/>
+};
 
 export default ProtectedRoute;

@@ -115,7 +115,7 @@ const handleOpenPopupLogin = () => setPopup({
       }
       </Popup>
 
-      <Main/>
+      <Main openLogin={handleOpenPopupLogin}/>
 
     </>
   );

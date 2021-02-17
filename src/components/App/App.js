@@ -30,6 +30,7 @@ const App = () => {
   if (loading) {
     return (<MainPreloader/>);
   }
+
   return (
     <div className="page">
         <Switch>
