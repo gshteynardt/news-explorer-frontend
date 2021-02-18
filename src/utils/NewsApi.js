@@ -1,5 +1,4 @@
-const NewsApiUrl = `https://newsapi.org/v2/`;
-const apiKey = `8fa29a8750fd4c7a82906a72eb94a49b`;
+import { NewsApiUrl, ApiKey } from './config.js';
 
 const config = {
   baseURL: NewsApiUrl,
@@ -38,12 +37,11 @@ class NewsApi {
 
   _getStartDate(){
     const date = this._today;
-    const startDay = new Date(date - this._interval * 24 * 60 * 60 * 1000).toISOString().substr(0, 10);
-    return startDay;
+    return new Date(date - this._interval * 24 * 60 * 60 * 1000).toISOString().substr(0, 10);
   }
 
   getArticles(keyword){
-    return fetch(`${this._baseUrl}${this._endpoint}?q=${keyword.keyword}&from=${this._convertedStartDay}&to=${this._convertedToday}&sort=${this._sortBy}&apiKey=${apiKey}`)
+    return fetch(`${this._baseUrl}${this._endpoint}?q=${keyword.keyword}&from=${this._convertedStartDay}&to=${this._convertedToday}&sort=${this._sortBy}&apiKey=${ApiKey}`)
       .then(res => this._handleOriginal(res));
   }
 }

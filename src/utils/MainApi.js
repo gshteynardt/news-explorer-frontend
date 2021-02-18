@@ -1,5 +1,5 @@
 import { token } from "./Token";
-import { BASE_URL } from "./auth";
+import { BASE_URL }  from "./config.js";
 
 class Api {
   constructor({ baseUrl, headers }) {

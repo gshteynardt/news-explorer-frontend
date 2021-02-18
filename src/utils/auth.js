@@ -1,6 +1,4 @@
-export const BASE_URL = process.env.NODE_ENV === 'production'
-  ? 'https://api.shteyn.students.nomoredomains.monster'
-  : 'http://localhost:3000';
+import { BASE_URL }  from "./config";
 
 const handleResponse = (res) => {
   if (!res.ok) {
