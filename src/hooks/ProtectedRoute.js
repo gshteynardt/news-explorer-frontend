@@ -19,7 +19,7 @@ const ProtectedRoute = (props) => {
     if(!isLogin && pathname === '/saved-news') openPopupLogin();
   }, []);
 
-  return isLogin || (loading && pathname === '/saved-news')
+  return  loading || isLogin
     ? <Route path={path} { ...rest }>{children}</Route>
     : <Redirect to="/"/>
 };
