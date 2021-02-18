@@ -1,16 +1,18 @@
 import React from 'react';
+
 import './Input.css';
 import createClassName from '../../utils/createClassName';
 
-export const Input = (
-  { name,
+export const Input = (props) => {
+  const {
+    name,
     className,
     onChange,
     title,
     isError,
     errorMessage,
-    ...rest }) => {
-
+    ...rest
+  } = props;
   const inputClassName = createClassName('input', className);
 
   return (
@@ -25,7 +27,8 @@ export const Input = (
         {...rest}
         />
       {
-        isError && (<span className="input__error">{errorMessage}</span>)
+        isError &&
+        (<span className="input__error">{errorMessage}</span>)
       }
     </label>
    );

@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+
 import './SearchForm.css';
 import { Form } from "../Forms/Form";
 import { Input } from "../Input/Input";
@@ -61,6 +62,5 @@ export const SearchForm = () => {
         />
       </Form>
     </div>
-
   );
 }

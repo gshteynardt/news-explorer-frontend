@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import './App.css';
 import {Route, Switch, Redirect, useHistory} from "react-router-dom";
+
+import './App.css';
 import { MainPage } from "../../pages/MainPage";
 import { SavedNewsPage } from "../../pages/SavedNewsPage";
 import { Footer } from "../Footer/Footer";
@@ -74,7 +75,6 @@ const App = () => {
   return (
     <div className="page">
       <Switch>
-
         <Route exact path={'/'}>
           <MainPage
             logOut={logOut}
@@ -83,10 +83,8 @@ const App = () => {
             openPopupRegister={handleOpenPopupRegister}
             openSuccessPopup={openSuccessPopup}
             onClosePopup={onClosePopup}
-
           />
         </Route>
-
         <ProtectedRoute
           path={'/saved-news'}
           openPopupLogin={handleOpenPopupLogin}
@@ -96,16 +94,13 @@ const App = () => {
             logOut={logOut}
           />
         </ProtectedRoute>
-
         <Route path="/*">
           <Redirect to="/" />
         </Route>
-
       </Switch>
       <Footer/>
     </div>
   );
-
 }
 
 export default App;

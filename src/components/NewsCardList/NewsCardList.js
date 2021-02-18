@@ -5,10 +5,18 @@ import NewsCard from "../NewsCard/NewsCard";
 import {Button} from "../Button/Button";
 import {useUser} from "../../hooks/useUser";
 
-export const NewsCardList = ({initState, button, className , title, articles = [], openLogin }) => {
+export const NewsCardList = (props) => {
+  const {
+    initState,
+    button,
+    className,
+    title,
+    articles = [],
+    openLogin
+  } = props;
+
   const { user } = useUser();
   const isLogin = !!user;
-
   const [numberOfCards, setNumberOfCards] = useState(initState);
   const newsClassName = createClassName('news__items', className);
   const isLastCard = articles.length >= numberOfCards;
@@ -27,18 +35,17 @@ export const NewsCardList = ({initState, button, className , title, articles = [
 
   return (
     <>
-      { title && <h2
-        className={'news__title'}>{title}</h2>}
-
+      { title && <h2 className={'news__title'}>{title}</h2>}
       <ul className={newsClassName}>
         {carsList}
       </ul>
-
-      { (button && isLastCard) && <Button
+      {
+        (button && isLastCard) && (<Button
         text={'Показать еще'}
         className={'button_type_show-card'}
         onClick={showMoreCards}
-      /> }
+      />)
+      }
     </>
   );
 }

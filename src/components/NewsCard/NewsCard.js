@@ -1,8 +1,9 @@
 import React, { memo } from 'react';
+import { useRouteMatch } from "react-router-dom";
+
 import './NewsCard.css';
 import { DeleteIcon } from "../Icons/DeleteIcon";
 import { Button } from "../Button/Button";
-import { useRouteMatch } from "react-router-dom";
 import { Checkbox } from "../Checkbox/Checkbox";
 import { ExternalLink } from "../Link/ExternalLink";
 import { useArticles } from "../../hooks/useArticles";
@@ -33,7 +34,7 @@ const NewsCard = ({ card, isLogin, openLogin }) => {
       <figure className={'card__wrapper'}>
           {
             path !== '/'
-            ? <Button
+            ? (<Button
                 className={'card__button'}
                 onClick={onClickBySavedArticle}
               >
@@ -41,13 +42,13 @@ const NewsCard = ({ card, isLogin, openLogin }) => {
                 <p className={'card__popup card__popup_prompt'}>
                   Убрать из сохранённых
                 </p>
-              </Button>
-            : <Checkbox
+              </Button>)
+            : (<Checkbox
               className={'card__button'}
               isLogin={isLogin}
               openLogin={openLogin}
               card={card}
-            />
+            />)
           }
 
         {

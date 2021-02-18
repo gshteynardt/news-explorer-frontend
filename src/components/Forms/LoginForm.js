@@ -1,4 +1,5 @@
 import React, {useEffect, useState} from 'react';
+
 import './Form.css';
 import {Form} from './Form';
 import {Input} from '../Input/Input';
@@ -16,7 +17,7 @@ const keyObj = {
 
 const errorMessage = 'Неверно указанны данные';
 
-export const LoginForm = ({openRegister, onClose, isOpen}) => {
+export const LoginForm = ({ openRegister, onClose, isOpen }) => {
   const [error, setError] = useState(null);
   const { getUser } = useUser();
   const { articles } = useArticles();

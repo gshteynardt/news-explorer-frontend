@@ -1,4 +1,5 @@
 import React, {useState} from "react";
+
 import './Navbar.css';
 import {Logo} from "../Icons/Logo";
 import {Navigation} from "../Navigation/Navigation";
@@ -27,9 +28,7 @@ export const Navbar = (props) => {
   const[isOpen, setIsOpen] = useState(false);
   const navbarClassName = createClassName('navbar', className)
 
-  const handleAuthClick = () => {
-    onLoginClick();
-  }
+  const handleAuthClick = () => onLoginClick();
 
   return (
     <div className={`${navbarClassName} ${isOpen && `navbar_theme_${bgMenu}`}`}>
@@ -39,7 +38,6 @@ export const Navbar = (props) => {
       <Navigation
         classNameList={`nav__list_header header__nav ${isOpen && `navbar_bg-${bgMenu} nav__list_open`}`}
       >
-
         <Link
           className={`link_type_${theme} header__link`}
           activeClassName={`link_type_${theme}-active`}
@@ -47,24 +45,22 @@ export const Navbar = (props) => {
           to={'/'}
           exact
         />
-
-        { isLogin && <Link
+        {
+          isLogin && (<Link
             className={`link_type_${theme} header__link`}
             activeClassName={`link_type_${theme}-active`}
             text={'Сохранённые статьи'}
             to={'/saved-news'}
-          /> }
+          />)
+        }
 
         <Button
           className={`button_type_header button_type_header-${theme} header__button`}
           text={ isLogin ? name : 'Авторизоваться' }
           onClick={isLogin ? logOut : handleAuthClick}
         >
-          { isLogin && <EnterIcon
-            classNamePath={`link__icon-${theme}`}
-          /> }
+          { isLogin && <EnterIcon classNamePath={`link__icon-${theme}`}/> }
         </Button>
-
       </Navigation>
       <Button
         className={`button_type_menu button_type_menu-${theme}`}

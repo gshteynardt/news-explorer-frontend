@@ -1,4 +1,5 @@
 import React from "react";
+
 import './Main.css';
 import { NewsCardList } from "../NewsCardList/NewsCardList";
 import { Preloader } from "../Preloader/Preloader";
@@ -13,9 +14,9 @@ export const Main = ({ openLogin }) => {
       <main className={'wrapper__content'}>
         {
           loading || notFound
-            ? (<Preloader
-              error={notFound}
-            />)
+            ? (
+              <Preloader error={notFound}/>
+            )
             : articles.length === 0 ? null : ( <section className={'wrapper-news'}>
                 <NewsCardList
                   openLogin={openLogin}

@@ -1,15 +1,21 @@
 import React from 'react';
+
 import { Header } from "../components/Header/Header";
 import { SavedNews } from "../components/SavedNews/SavedNews";
 import { Navbar } from "../components/Navbar/Navbar";
 import { useUser } from "../hooks/useUser";
 import { useArticles } from "../hooks/useArticles";
-import { countKeywords, getKeywordPhrase, declination, keywordsMap, getKeywords } from "../utils/processorArticles";
+import {
+  countKeywords,
+  getKeywordPhrase,
+  declination,
+  keywordsMap,
+  getKeywords
+} from "../utils/processorArticles";
 
 export const SavedNewsPage = ({logOut}) => {
   const { user } = useUser();
   const name = user?.name;
-
   const { savedArticles } = useArticles();
   const keywords = getKeywords(savedArticles);
   const uniqKeywordsArr = countKeywords(keywords);
@@ -47,7 +53,6 @@ export const SavedNewsPage = ({logOut}) => {
                 </>
               )
             }
-
           </p>
         </div>
         <SavedNews savedArticles={savedArticles}/>

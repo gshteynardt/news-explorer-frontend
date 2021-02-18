@@ -1,6 +1,6 @@
 import React from "react"
 
-export const FacebookIcon = ({className, radius}) => {
+export const FacebookIcon = () => {
 
   return (
     <svg

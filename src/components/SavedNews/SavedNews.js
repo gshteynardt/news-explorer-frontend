@@ -1,6 +1,6 @@
 import React from "react";
-import './SavedNews.css';
 
+import './SavedNews.css';
 import { NewsCardList } from "../NewsCardList/NewsCardList";
 
 export const SavedNews = ({savedArticles}) => {

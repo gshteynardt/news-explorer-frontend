@@ -1,11 +1,13 @@
 import React from "react";
+
 import './Checkbox.css';
 import createClassName from "../../utils/createClassName";
 import {Bookmark} from "../Icons/Bookmark";
 import {useArticles} from "../../hooks/useArticles";
 
 
-export const Checkbox = ({className, isLogin, card, openLogin }) => {
+export const Checkbox = (props) => {
+  const { className, isLogin, card, openLogin } = props;
   const labelClassName = createClassName('checkbox', className);
   const { saveArticle, deleteArticle } = useArticles();
   const isChecked = !!card._id;

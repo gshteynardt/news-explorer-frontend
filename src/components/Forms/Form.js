@@ -1,10 +1,12 @@
 import React from "react";
+
 import './Form.css';
 import createClassName from "../../utils/createClassName";
 import {Button} from "../Button/Button";
 
-export const Form = (
-  { className,
+export const Form = (props) => {
+  const {
+    className,
     classNameBtn,
     onSubmit,
     children,
@@ -12,8 +14,7 @@ export const Form = (
     disabled,
     errorMessage,
     ...rest
-  }) => {
-
+  } = props;
   const formClassName = createClassName('form', className);
 
   return (
@@ -23,9 +24,7 @@ export const Form = (
       {...rest}
     >
       { children }
-
       <span className="form__message">{errorMessage}</span>
-
       <Button
         type={'submit'}
         className={classNameBtn}

@@ -7,17 +7,14 @@ export const Popup = ({ isOpen, onClose, children }) => {
 
   const handleClick = useCallback((e) => {
     if (e.currentTarget === e.target) onClose();
-
     if (!isOpen) e.stopPropagation();
   }, [onClose, isOpen]);
 
   useEffect(() => {
     if (!isOpen) return;
-
     const handleEsc = (e) => {
       if (e.key === 'Escape') onClose();
     };
-
     document.addEventListener('keyup', handleEsc);
 
     return () => {

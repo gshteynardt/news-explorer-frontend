@@ -1,6 +1,8 @@
 import {createContext, useContext, useState, useEffect} from 'react';
+
 import * as auth from '../utils/auth.js';
 import { token } from '../utils/Token.js';
+
 const CurrentUserContext = createContext();
 
 export const UserProvider = ({ children }) => {

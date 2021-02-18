@@ -1,4 +1,5 @@
 import React from 'react';
+
 import './MainPreloader.css';
 
 const MainPreloader = () => (
