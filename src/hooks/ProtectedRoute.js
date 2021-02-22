@@ -1,8 +1,6 @@
 import React, { useEffect } from 'react';
 import { Route, Redirect, useLocation } from 'react-router-dom';
 
-import {useUser} from "./useUser";
-
 const ProtectedRoute = (props) => {
   const {
     isLogin,
@@ -13,11 +11,10 @@ const ProtectedRoute = (props) => {
   } = props;
 
   const { pathname } = useLocation();
-  const { loading } = useUser();
 
   useEffect(() => {
     if(!isLogin && pathname === '/saved-news') openPopupLogin();
-  }, []);
+  }, [isLogin]);
 
   return isLogin
     ? <Route path={path} { ...rest }>{children}</Route>
