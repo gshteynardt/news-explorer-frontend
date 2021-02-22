@@ -1,5 +1,5 @@
 # News-Explorer
-###[сслыка на проект](https://shtey.students.nomoredomains.monster)
+###[ссылка на проект](https://shtey.students.nomoredomains.monster)
 
 ### ссылка на сервер https://api.shtey.students.nomoredomains.monster
 
