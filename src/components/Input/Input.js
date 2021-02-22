@@ -1,14 +1,18 @@
 import React from 'react';
+
 import './Input.css';
 import createClassName from '../../utils/createClassName';
 
-export const Input = (
-  { name,
+export const Input = (props) => {
+  const {
+    name,
     className,
-    handleChange,
+    onChange,
     title,
-    ...rest }) => {
-
+    isError,
+    errorMessage,
+    ...rest
+  } = props;
   const inputClassName = createClassName('input', className);
 
   return (
@@ -18,11 +22,14 @@ export const Input = (
       </span>
       <input
         className={inputClassName}
-        name={ name }
-        onChange={handleChange}
+        name={name}
+        onChange={onChange}
         {...rest}
         />
-      <span className="input__error"></span>
+      {
+        isError &&
+        (<span className="input__error">{errorMessage}</span>)
+      }
     </label>
    );
 }

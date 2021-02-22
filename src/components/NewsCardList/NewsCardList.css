@@ -1,9 +1,10 @@
 .news__items {
 	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(calc((100% - 136px)/3), 1fr));
+	grid-template-columns: repeat(auto-fit, minmax(calc((100% - 136px)/3), 400px));
 	grid-auto-rows: 576px;
 	gap: 16px;
 	align-content: center;
+	justify-content: center;
 	list-style: none;
 	padding: 0;
 	margin: 64px 0;
@@ -21,7 +22,7 @@
 
 @media screen and (max-width: 1024px) {
 	.news__items {
-		grid-template-columns: repeat(auto-fit, minmax(calc((100% - 96px)/3), 1fr));
+		grid-template-columns: repeat(auto-fit, minmax(calc((100% - 96px)/3), 400px));
 		grid-auto-rows: 420px;
 		gap: 8px;
 		margin: 32px 0;

@@ -1,39 +1,42 @@
-import React, {useState, useRef} from "react";
+import React from "react";
+
 import './Checkbox.css';
 import createClassName from "../../utils/createClassName";
 import {Bookmark} from "../Icons/Bookmark";
+import {useArticles} from "../../hooks/useArticles";
 
-export const Checkbox = ({className, loggedIn}) => {
+
+export const Checkbox = (props) => {
+  const { className, isLogin, card, openLogin } = props;
   const labelClassName = createClassName('checkbox', className);
-  const [isChecked, setIsChecked] = useState(false);
-  const checkbox = useRef();
-
-  const handleClick = () => {
-    setIsChecked(checkbox.current.checked)
-  }
+  const { saveArticle, deleteArticle } = useArticles();
+  const isChecked = !!card._id;
+  const handleSave = () => !card._id ? saveArticle(card) : deleteArticle(card);
+  const onClick = () => !isLogin ? openLogin() : '';
 
   const tooltip = () => {
-    if (!loggedIn) {
+    if (!isLogin) {
       return 'Войдите, чтобы сохранять статьи'
-    } else if (loggedIn && isChecked) {
+    } else if (isLogin && isChecked) {
       return 'Убрать из сохранённых'
-    } else if (loggedIn) {
+    } else if (isLogin) {
       return 'Сохранить'
     }
   }
 
   return(
-    <label className={labelClassName}>
+    <label className={labelClassName} onClick={onClick}>
       <input
-        onClick={handleClick}
-        ref={checkbox}
+        checked={isChecked}
+        onChange={ handleSave }
         className={'checkbox__input'}
         type={'checkbox'}
-        disabled={loggedIn ? '' : 'disabled'}
+        disabled={!isLogin}
        />
       <span className={'checkbox__box'}>
         <Bookmark
           isChecked={isChecked}
+          isLogin={isLogin}
         />
       </span>
         <div className={'checkbox__tooltip'}>
@@ -42,3 +45,5 @@ export const Checkbox = ({className, loggedIn}) => {
     </label>
   )
 }
+
+

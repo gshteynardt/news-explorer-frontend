@@ -1,8 +1,10 @@
-import './Link.css';
 import React from 'react';
+
+import './Link.css';
 import createClassName from "../../utils/createClassName";
 
-export const ExternalLink = ({ href, children, classNames, ...rest}) => {
+export const ExternalLink = (props) => {
+  const { href, children, classNames, ...rest} = props;
   const linkClassName = createClassName('link', classNames);
 
   return (

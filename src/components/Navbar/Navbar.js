@@ -1,4 +1,5 @@
 import React, {useState} from "react";
+
 import './Navbar.css';
 import {Logo} from "../Icons/Logo";
 import {Navigation} from "../Navigation/Navigation";
@@ -8,14 +9,26 @@ import {Button} from "../Button/Button";
 import {MenuIcon} from "../Icons/MenuIcon";
 import {CrossIcon} from "../Icons/CrossIcon";
 import createClassName from "../../utils/createClassName";
+import {useUser} from "../../hooks/useUser";
 
-export const Navbar = ({className, theme, bgMenu, loggedIn, onLoginClick}) => {
+export const Navbar = (props) => {
+  const { user } = useUser();
+  const isLogin = !!user;
+  const name = user?.name;
+
+  const {
+    className,
+    theme,
+    bgMenu,
+    onLoginClick,
+    logOut,
+    ...rest
+  } = props;
+
   const[isOpen, setIsOpen] = useState(false);
   const navbarClassName = createClassName('navbar', className)
 
-  const handleAuthClick = () => {
-    onLoginClick();
-  }
+  const handleAuthClick = () => onLoginClick();
 
   return (
     <div className={`${navbarClassName} ${isOpen && `navbar_theme_${bgMenu}`}`}>
@@ -25,7 +38,6 @@ export const Navbar = ({className, theme, bgMenu, loggedIn, onLoginClick}) => {
       <Navigation
         classNameList={`nav__list_header header__nav ${isOpen && `navbar_bg-${bgMenu} nav__list_open`}`}
       >
-
         <Link
           className={`link_type_${theme} header__link`}
           activeClassName={`link_type_${theme}-active`}
@@ -33,24 +45,22 @@ export const Navbar = ({className, theme, bgMenu, loggedIn, onLoginClick}) => {
           to={'/'}
           exact
         />
-
-        { loggedIn && <Link
+        {
+          isLogin && (<Link
             className={`link_type_${theme} header__link`}
             activeClassName={`link_type_${theme}-active`}
             text={'Сохранённые статьи'}
             to={'/saved-news'}
-          /> }
+          />)
+        }
 
         <Button
           className={`button_type_header button_type_header-${theme} header__button`}
-          text={ loggedIn ? 'Грета' : 'Авторизоваться' }
-          onClick={handleAuthClick}
+          text={ isLogin ? name : 'Авторизоваться' }
+          onClick={isLogin ? logOut : handleAuthClick}
         >
-          { loggedIn && <EnterIcon
-            classNamePath={`link__icon-${theme}`}
-          /> }
+          { isLogin && <EnterIcon classNamePath={`link__icon-${theme}`}/> }
         </Button>
-
       </Navigation>
       <Button
         className={`button_type_menu button_type_menu-${theme}`}

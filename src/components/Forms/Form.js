@@ -1,33 +1,30 @@
 import React from "react";
+
 import './Form.css';
 import createClassName from "../../utils/createClassName";
 import {Button} from "../Button/Button";
 
-export const Form = (
-  { className,
+export const Form = (props) => {
+  const {
+    className,
     classNameBtn,
     onSubmit,
     children,
     textSubmitBtn,
     disabled,
-  }) => {
-
+    errorMessage,
+    ...rest
+  } = props;
   const formClassName = createClassName('form', className);
-
-  const handleSearch = (e) => {
-    e.preventDefault();
-    onSubmit();
-  }
 
   return (
     <form
       className={ formClassName }
-      onSubmit={ handleSearch }
+      onSubmit={ onSubmit }
+      {...rest}
     >
       { children }
-
-      <span className="form__message"></span>
-
+      <span className="form__message">{errorMessage}</span>
       <Button
         type={'submit'}
         className={classNameBtn}

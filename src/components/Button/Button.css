@@ -13,6 +13,7 @@
 	display: flex;
 	align-items: center;
 	transition: .3s ease;
+	outline: none;
 }
 
 .button_type_search {
@@ -30,6 +31,11 @@
 
 .button_type_search:hover {
 	background-color: #347EFF;
+}
+
+.button_type_search:disabled {
+	background: #2F71E5;
+	cursor: default;
 }
 
 /*Menu header*/
